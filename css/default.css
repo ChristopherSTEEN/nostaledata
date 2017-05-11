@@ -1,0 +1,119 @@
+body {
+	margin: 0;
+}
+
+@font-face {
+	font-family: "PixelOperator";
+	src: url('../font/PixelOperator.ttf');
+}
+
+@font-face {
+	font-family: "PixelOperator";
+	font-weight: bold;
+	src: url('../font/PixelOperator-Bold.ttf');
+}
+
+#footer {
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 20px;
+	font-size: 22px;
+	margin-left: 25%;
+	margin-top: 60px;
+	width: 50%;
+}
+
+#footer p {
+	font-weight: bold;
+	margin-left: 10%;
+	width: 80%
+}
+
+html {
+	background-attachment: fixed;
+	background-size: cover;
+	background-image: url(../img/background.jpg);
+	background-repeat: no-repeat;
+	font-family: PixelOperator
+}
+
+.index-all-link img, .index-server-link img {
+	width: 40%;
+}
+
+.index-all-link {
+	margin-left: 30%;
+}
+
+#index-container {
+	width: 100%;
+}
+
+#index-logo {
+	margin-left: 35%;
+	margin-top: 40px;
+	text-align: center;
+	width: 30%;
+}
+
+.index-server-link {
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+#menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+#menu > ul > li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	width: 50%;
+}
+
+#menu > ul > li > a {
+	background: #0099FF;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+	color: #000;
+	display: block;
+	font-size: 30px;
+	font-weight: bold;
+	min-width: 100px;
+	padding: 10px 15px 10px 15px;
+	text-align: center;
+	text-decoration: none;
+	transition: background 500ms, color 500ms, border-color 500ms;
+}
+
+#menu > ul > li > a:hover {
+	background: #FFF;
+	color: #000;
+}
+
+#menu > ul > li > ul {
+	position: absolute;
+	display: none;
+	left: 0;
+	top: 50px;
+}
+
+#menu > ul > li > ul > li > a {
+	background: #0099FF;
+	border-bottom: 1px solid #FFF;
+	color: #000;
+	display: block;
+	font-size: 18px;
+	font-weight: bold;
+	min-width: 130px;
+	padding: 5px 10px 5px 10px;
+	text-decoration: none;
+}
+
+#menu > ul > li > ul > li > a:hover {
+	background: #FFF;
+}
