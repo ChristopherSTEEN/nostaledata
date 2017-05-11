@@ -1,32 +1,71 @@
+@media screen and (min-width: 320px) and (max-width: 720px) {
+	#footer {
+		font-size: 3vw;
+		margin-left: 10%;
+		margin-top: 20px;
+		width: 80%;
+	}
+	#index-logo {
+		margin-top: 20px;
+	}
+	#menu > ul > li > a {
+		font-size: 6.3vw;
+	}
+	#menu > ul > li > ul > li > a {
+		font-size: 4.4vw;
+	}
+}
+
+@media screen and (min-width: 721px) and (max-width: 1024px) {
+	#footer {
+		font-size: 2.2vw;
+		margin-left: 15%;
+		margin-top: 40px;
+		width: 70%;
+	}
+	#index-logo {
+		margin-top: 30px;
+	}
+	#menu > ul > li > a {
+		font-size: 3.5vw;
+	}
+	#menu > ul > li > ul > li > a {
+		font-size: 2.2vw;
+	}
+}
+
+@media screen and (min-width: 1025px) {
+	#footer {
+		font-size: 2.2vw;
+		margin-left: 20%;
+		margin-top: 60px;
+		width: 60%;
+	}
+	#index-logo {
+		margin-top: 40px;
+	}
+	#menu > ul > li > a {
+		font-size: 3vw;
+	}
+	#menu > ul > li > ul > li > a {
+		font-size: 1.75vw;
+	}
+}
+
 body {
 	margin: 0;
-}
-
-@font-face {
-	font-family: "PixelOperator";
-	src: url('../font/PixelOperator.ttf');
-}
-
-@font-face {
-	font-family: "PixelOperator";
-	font-weight: bold;
-	src: url('../font/PixelOperator-Bold.ttf');
 }
 
 #footer {
 	background-color: white;
 	border: 1px solid black;
 	border-radius: 20px;
-	font-size: 22px;
-	margin-left: 25%;
-	margin-top: 60px;
-	width: 50%;
 }
 
 #footer p {
 	font-weight: bold;
-	margin-left: 10%;
-	width: 80%
+	margin-left: 25%;
+	width: 50%
 }
 
 html {
@@ -34,7 +73,6 @@ html {
 	background-size: cover;
 	background-image: url(../img/background.jpg);
 	background-repeat: no-repeat;
-	font-family: PixelOperator
 }
 
 .index-all-link img, .index-server-link img {
@@ -50,10 +88,9 @@ html {
 }
 
 #index-logo {
-	margin-left: 35%;
-	margin-top: 40px;
+	margin-left: 30%;
 	text-align: center;
-	width: 30%;
+	width: 40%;
 }
 
 .index-server-link {
@@ -81,7 +118,6 @@ html {
 	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 	color: #000;
 	display: block;
-	font-size: 30px;
 	font-weight: bold;
 	min-width: 100px;
 	padding: 10px 15px 10px 15px;
@@ -99,7 +135,7 @@ html {
 	position: absolute;
 	display: none;
 	left: 0;
-	top: 50px;
+	top: 100%;
 }
 
 #menu > ul > li > ul > li > a {
@@ -107,7 +143,6 @@ html {
 	border-bottom: 1px solid #FFF;
 	color: #000;
 	display: block;
-	font-size: 18px;
 	font-weight: bold;
 	min-width: 130px;
 	padding: 5px 10px 5px 10px;
