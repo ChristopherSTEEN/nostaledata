@@ -1,4 +1,4 @@
-@media screen and (min-width: 320px) and (max-width: 720px) {
+@media screen and (min-width: 320px) and (max-width: 719px) {
 	#footer {
 		font-size: 3vw;
 		margin-left: 10%;
@@ -16,7 +16,7 @@
 	}
 }
 
-@media screen and (min-width: 721px) and (max-width: 1024px) {
+@media screen and (min-width: 720px) and (max-width: 1023px) {
 	#footer {
 		font-size: 2.2vw;
 		margin-left: 15%;
@@ -34,7 +34,7 @@
 	}
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1024px) {
 	#footer {
 		font-size: 2.2vw;
 		margin-left: 20%;
@@ -66,6 +66,25 @@ body {
 	font-weight: bold;
 	margin-left: 25%;
 	width: 50%
+}
+
+form {
+	background-color: rgba(0, 153, 255, 0.7);
+	border: 1px solid black;
+	border-radius: 25px;
+	margin-bottom: 40px;
+	margin-left: 15%;
+	padding: 10px 5px 10px 5px;
+	width: 70%;
+}
+
+form > div {
+	display: inline-block;
+	font-weight: bold;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	text-align: right;
+	width: 40%;
 }
 
 html {
@@ -151,4 +170,26 @@ html {
 
 #menu > ul > li > ul > li > a:hover {
 	background: #FFF;
+}
+
+table {
+	background-color: rgba(0, 153, 255, 0.7);
+	border: 1px solid black;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	margin-bottom: 40px;
+	margin-left: 5%;
+	padding: 10px 5px 10px 5px;
+	width: 90%;
+}
+
+table > thead > tr > td {
+	border-right: 1px solid black;
+	text-align: center;
+	padding: 0.25%;
+	width: 7%;
+}
+
+table > thead > tr > td:last-of-type {
+	border: none;
 }
