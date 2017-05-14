@@ -13,15 +13,14 @@
 	</head>
 	<body>
 		<?php include_once ("menu.php"); ?>
-		<header><img id="index-logo" src="./img/logo.png"></img></header>
 		<div id="index-container">
-			<a class="index-server-link" href=""><img src="./img/sv1.png"></a>
-			<a class="index-server-link" href=""><img src="./img/sv2.png"></a>
+			<a class="index-server-link" href="#"><img src="./img/sv1.png"></a>
+			<a class="index-server-link" href="#"><img src="./img/sv2.png"></a>
 			<br/>
-			<a class="index-server-link" href=""><img src="./img/sv3.png"></a>
-			<a class="index-server-link" href=""><img src="./img/sv4.png"></a>
+			<a class="index-server-link" href="#"><img src="./img/sv3.png"></a>
+			<a class="index-server-link" href="#"><img src="./img/sv4.png"></a>
 			<br/>
-			<a class="index-all-link" href="/characters#index"><img src="./img/sv0.png"></a>
+			<a class="index-all-link" href="#"><img src="./img/sv0.png"></a>
 		</div>
 		<div id="footer">
 			<p>Site cr&eacute;e sous PHP<br/>
