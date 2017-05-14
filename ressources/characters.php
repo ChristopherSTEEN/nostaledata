@@ -11,8 +11,7 @@
 		<script src="../js/script.js"></script>
 	</head>
 	<body>
-		<?php include_once ("../menu.php"); ?>
-		<header><img id="index-logo" src="../img/logo.png"></img></header>
+		<?php include_once ("./menu.php"); ?>
 		<form action="./characters.php" method="POST" id="characters">
 			<div class="label">Pseudo : </div><input type="text" id="username" name="username"><br/>
 			<div class="label">Image : </div><input type="file" id="charapic" name="charapic"><br/>
@@ -40,12 +39,12 @@
 			<div class="label">Réputation : </div><input type="number" step="1" min="0" id="reput" name="reput"><br/>
 			<center><input type="submit" value="Enregistrer le personnage" name="submit" id="submit"></center>
 		</form>
-		<table>
+		<table id="charatable">
 			<thead>
 				<tr>
 					<td>ID</td>
 					<td>Pseudo</td>
-					<td>Lien IMG</td>
+					<td>Img name</td>
 					<td>Métier</td>
 					<td>Serveur</td>
 					<td>Nv Comb</td>
