@@ -56,6 +56,30 @@ body {
 	margin: 0;
 }
 
+#cardtable > thead > tr > td,
+#pettable > thead > tr > td {
+	width: 14.28%;
+}
+
+#charatable > thead > tr > td {
+	width: 7%;
+}
+
+#equiptable > thead > tr > td,
+#fairietable > thead > tr > td {
+	width: 12.5%;
+}
+
+#error {
+	color: red;
+}
+
+#charaerror {
+	text-align: center;
+	margin-left: 25%;
+	width: 50%;
+}
+
 #footer {
 	background-color: white;
 	border: 1px solid black;
@@ -117,6 +141,13 @@ html {
 	margin-right: 5%;
 }
 
+#jeweltable > thead > tr > td,
+#pequiptable > thead > tr > td,
+#pcardtable > thead > tr > td, 
+#parttable > thead > tr > td {
+	width: 16.66%;
+}
+
 #menu ul {
 	list-style: none;
 	margin: 0;
@@ -155,6 +186,7 @@ html {
 	display: none;
 	left: 0;
 	top: 100%;
+	width: 100%;
 }
 
 #menu > ul > li > ul > li > a {
@@ -172,6 +204,14 @@ html {
 	background: #FFF;
 }
 
+#resisttable > thead > tr > td {
+	width: 10%;
+}
+
+#success {
+	color: green;
+}
+
 table {
 	background-color: rgba(0, 153, 255, 0.7);
 	border: 1px solid black;
@@ -187,31 +227,6 @@ table > thead > tr > td {
 	border-right: 1px solid black;
 	text-align: center;
 	padding: 0.25%;
-}
-
-#cardtable > thead > tr > td,
-#pettable > thead > tr > td {
-	width: 14.28%;
-}
-
-#charatable > thead > tr > td {
-	width: 7%;
-}
-
-#equiptable > thead > tr > td,
-#fairietable > thead > tr > td {
-	width: 12.5%;
-}
-
-#jeweltable > thead > tr > td,
-#pequiptable > thead > tr > td,
-#pcardtable > thead > tr > td, 
-#parttable > thead > tr > td {
-	width: 16.66%;
-}
-
-#resisttable > thead > tr > td {
-	width: 10%;
 }
 
 table > thead > tr > td:last-of-type {
