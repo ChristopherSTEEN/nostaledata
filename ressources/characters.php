@@ -9,21 +9,56 @@
 		<link rel="icon" type="image/png" href="../img/icone.png">
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="../js/script.js"></script>
+		<script>
+			$(function(){
+				$("#characters").on("submit", function(e){
+					e.preventDefault()
+					data = {
+						pseudo: $("#username").val(),
+						img: $("#charapic").val(),
+						job: $("#charajob").val(),
+						server: $("#charaserv").val(),
+						battlelv: $("#battlelv").val(),
+						battleprog: $("#battleprog").val(),
+						joblv: $("#joblv").val(),
+						jobprog: $("#jobprog").val(),
+						herolv: $("#herolv").val(),
+						heroprog: $("#heroprog").val(),
+						gold: $("#gold").val(),
+						reput: $("#reput").val(),
+						form: "characters"
+					}
+					$.ajax({
+						method: "POST",
+						url: "../ajax/ajaxregister.php",
+						data : data,
+						success: function(success){
+							//if (success == true){
+								//$("#charaerror").html("<span style='color: green'>Le personnage a bien été enregistré.</span>")
+							//} else {
+								//$("#charaerror").html("<span style='color: red'>Une erreur est survenue!</span>")
+							//}
+							$("#charaerror").html(success);						}
+					})
+				})
+			})
+		</script>
 	</head>
 	<body>
 		<?php include_once ("./menu.php"); ?>
+		<div id="charaerror"></div>
 		<form action="./characters.php" method="POST" id="characters">
 			<div class="label">Pseudo : </div><input type="text" id="username" name="username"><br/>
 			<div class="label">Image : </div><input type="file" id="charapic" name="charapic"><br/>
 			<div class="label">Métier : </div>
-			<select name="job" form="characters">
+			<select name="job" form="characters" id="charajob">
 				<option value="Aventurier">Aventurier</option>
 				<option value="Escrimeur">Escrimeur</option>
 				<option value="Archer">Archer</option>
 				<option value="Mage">Mage</option>
 			</select><br/>
 			<div class="label">Serveur : </div>
-			<select name="server" form="characters">
+			<select name="server" form="characters" id="charaserv">
 				<option value="1">1 (Océanie)</option>
 				<option value="2">2 (Solare)</option>
 				<option value="3">3 (Nova)</option>
