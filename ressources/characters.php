@@ -93,6 +93,27 @@
 				</tr>
 			</thead>
 			<tbody>
+				<?php
+					$characters = $PDO->query("SELECT * FROM characters ORDER BY ID");
+					foreach ($characters as $row){
+						echo "
+							<tr>
+								<td>" . $row->ID ."</td>
+								<td>" . $row->pseudo ."</td>
+								<td>" . $row->image_url ."</td>
+								<td>" . $row->metier ."</td>
+								<td>" . $row->server ."</td>
+								<td>" . $row->battlelv ."</td>
+								<td>" . $row->battleprog ."</td>
+								<td>" . $row->joblv ."</td>
+								<td>" . $row->jobprog ."</td>
+								<td>" . $row->herolv ."</td>
+								<td>" . $row->heroprog ."</td>
+								<td>" . $row->gold ."</td>
+								<td>" . $row->reput ."</td>
+							</tr>";
+					}
+				?>
 			</tbody>
 		</table>
 	</body>
