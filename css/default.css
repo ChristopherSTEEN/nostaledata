@@ -57,16 +57,21 @@ body {
 }
 
 #cardtable > thead > tr > td,
-#pettable > thead > tr > td {
+#pettable > thead > tr > td, 
+#cardtable > tbody > tr > td,
+#pettable > tbody > tr > td {
 	width: 14.28%;
 }
 
-#charatable > thead > tr > td {
+#charatable > thead > tr > td,
+#charatable > tbody > tr > td {
 	width: 7%;
 }
 
 #equiptable > thead > tr > td,
-#fairietable > thead > tr > td {
+#fairietable > thead > tr > td,
+#equiptable > tbody > tr > td,
+#fairietable > tbody > tr > td {
 	width: 12.5%;
 }
 
@@ -144,7 +149,11 @@ html {
 #jeweltable > thead > tr > td,
 #pequiptable > thead > tr > td,
 #pcardtable > thead > tr > td, 
-#parttable > thead > tr > td {
+#parttable > thead > tr > td,
+#jeweltable > tbody > tr > td,
+#pequiptable > tbody > tr > td,
+#pcardtable > tbody > tr > td, 
+#parttable > tbody > tr > td {
 	width: 16.66%;
 }
 
@@ -204,7 +213,8 @@ html {
 	background: #FFF;
 }
 
-#resisttable > thead > tr > td {
+#resisttable > thead > tr > td,
+#resisttable > tbody > tr > td {
 	width: 10%;
 }
 
@@ -224,11 +234,19 @@ table {
 }
 
 table > thead > tr > td {
+	color: blue;
+	border-bottom: 1px solid black;
+	font-weight: bold;
+}
+
+table > thead > tr > td,
+table > tbody > tr > td {
 	border-right: 1px solid black;
 	text-align: center;
 	padding: 0.25%;
 }
 
-table > thead > tr > td:last-of-type {
-	border: none;
+table > thead > tr > td:last-of-type,
+table > tbody > tr > td:last-of-type {
+	border-right: none;
 }
