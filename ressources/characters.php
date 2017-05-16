@@ -5,14 +5,15 @@
 <html>
 	<head>
 		<title>Gestions des personnages</title>
+		<meta charset="utf-8">
 		<link rel="stylesheet" href="../css/default.css">
 		<link rel="icon" type="image/png" href="../img/icone.png">
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="../js/script.js"></script>
 		<script>
 			$(function(){
-				$("#characters").on("submit", function(e){
-					e.preventDefault()
+				$("#characters").on("submit", function(c){
+					c.preventDefault()
 					data = {
 						pseudo: $("#username").val(),
 						img: $("#charapic").val(),
@@ -33,12 +34,8 @@
 						url: "../ajax/ajaxregister.php",
 						data : data,
 						success: function(success){
-							//if (success == true){
-								//$("#charaerror").html("<span style='color: green'>Le personnage a bien été enregistré.</span>")
-							//} else {
-								//$("#charaerror").html("<span style='color: red'>Une erreur est survenue!</span>")
-							//}
-							$("#charaerror").html(success);						}
+							$("#globalerror").html(success);						
+						}
 					})
 				})
 			})
@@ -46,7 +43,7 @@
 	</head>
 	<body>
 		<?php include_once ("./menu.php"); ?>
-		<div id="charaerror"></div>
+		<div id="globalerror"></div>
 		<form action="./characters.php" method="POST" id="characters">
 			<div class="label">Pseudo : </div><input type="text" id="username" name="username"><br/>
 			<div class="label">Image : </div><input type="file" id="charapic" name="charapic"><br/>
