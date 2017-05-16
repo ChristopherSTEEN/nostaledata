@@ -6,6 +6,7 @@
 <html>
 	<head>
 		<title>Nostale Data</title>
+		<meta charset="utf-8">
 		<link rel="stylesheet" href="./css/default.css">
 		<link rel="icon" type="image/png" href="./img/icone.png">
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
