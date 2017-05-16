@@ -58,4 +58,23 @@
 			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
 		}
 	}
+	
+	if ($_POST["form"] == "jewelries"){
+		if ($_POST["chara"] != "" && $_POST["type"] != "" && $_POST["name"] != "" && $_POST["level"] != ""){
+			$jewelinsert = $PDO->prepare("INSERT INTO jewelries (character_id, image_url, jeweltype, name, level) 
+			VALUES (:chara, :img, :type, :name, :level)");
+			$jewelinsert->bindValue(':chara', $_POST["chara"]);
+			$jewelinsert->bindValue(':img', $_POST["img"]);
+			$jewelinsert->bindValue(':type', $_POST["type"]);
+			$jewelinsert->bindValue(':name', $_POST["name"]);
+			$jewelinsert->bindValue(':level', $_POST["level"]);
+			if($jewelinsert->execute()){
+				echo "<span id='success'>Enregistrement effectué</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}	
+		} else {
+			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
+		}
+	}
 ?>
