@@ -9,14 +9,46 @@
 		<link rel="icon" type="image/png" href="../img/icone.png">
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="../js/script.js"></script>
+		<script>
+			$(function(){
+				$("#jewelries").on("submit", function(j){
+					j.preventDefault()
+					data = {
+						chara: $("#charajewel").val(),
+						img: $("#jewelpic").val(),
+						type: $("#jeweltype").val(),
+						name: $("#jewelname").val(),
+						level: $("#jewellv").val(),
+						form: "jewelries"
+					}
+					$.ajax({
+						method: "POST",
+						url: "../ajax/ajaxregister.php",
+						data : data,
+						success: function(success){
+							$("#globalerror").html(success);
+						}
+					})
+				})
+			})
+		</script>
 	</head>
 	<body>
 		<?php include_once ("./menu.php"); ?>
+		<div id="globalerror"></div>
 		<form action="./jewelries.php" method="POST" id="jewelries">
-			<div class="label">Personnage : </div><input type="text" id="charajewel" name="charajewel"><br/>
+			<div class="label">Personnage : </div>
+			<select name="charajewel" form="jewelries" id="charajewel">
+				<?php
+					$charajewels = $PDO->query("SELECT * FROM characters ORDER BY ID");
+					foreach ($charajewels as $jewrow){
+						echo "<option value='" . $jewrow->ID . "'>" . $jewrow->pseudo . "</option>";
+					}
+				?>
+			</select><br/>
 			<div class="label">Image : </div><input type="file" id="jewelpic" name="jewelpic"><br/>
 			<div class="label">Type : </div>
-			<select name="jeweltype" form="jewelries">
+			<select name="jeweltype" form="jewelries" id="jeweltype">
 				<option value="Bague">Bague</option>
 				<option value="Bague héroique">Bague Héroique</option>
 				<option value="Collier">Collier</option>
@@ -40,6 +72,20 @@
 				</tr>
 			</thead>
 			<tbody>
+				<?php
+					$jewelries = $PDO->query("SELECT j.*, c.pseudo FROM jewelries j INNER JOIN characters c ON c.ID = j.character_id ORDER BY j.ID");
+					foreach ($jewelries as $row){
+						echo "
+							<tr>
+								<td>" . $row->ID ."</td>
+								<td>" . $row->pseudo ."</td>
+								<td>" . $row->image_url ."</td>
+								<td>" . $row->jeweltype ."</td>
+								<td>" . $row->name ."</td>
+								<td>" . $row->level ."</td>
+							</tr>";
+					}
+				?>
 			</tbody>
 		</table>
 	</body>
