@@ -34,7 +34,28 @@
 				echo "<span id='error'>Le personnage existe déjà</span>";
 			}
 		} else {
-			echo "<span id='error'>Un champ est vide</span>";
+			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
+		}
+	}
+	
+	if ($_POST["form"] == "equipements" ){
+		if ($_POST["chara"] != "" && $_POST["type"] != "" && $_POST["name"] != "" && $_POST["level"] != "" && $_POST["upgrade"] != ""){
+			$equipinsert = $PDO->prepare("INSERT INTO equipments (character_id, image_url, equiptype, name, level, rare, upgrade) 
+			VALUES (:charaid, :img, :equiptype, :name, :level, :rare, :upgrade)");
+			$equipinsert->bindValue(':charaid', $_POST["chara"]);
+			$equipinsert->bindValue(':img', $_POST["img"]);
+			$equipinsert->bindValue(':equiptype', $_POST["type"]);
+			$equipinsert->bindValue(':name', $_POST["name"]);
+			$equipinsert->bindValue(':level', $_POST["level"]);
+			$equipinsert->bindValue(':rare', $_POST["rare"]);
+			$equipinsert->bindValue(':upgrade', $_POST["upgrade"]);
+			if($equipinsert->execute()){
+				echo "<span id='success'>Enregistrement effectué</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}
+		} else {
+			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
 		}
 	}
 ?>
