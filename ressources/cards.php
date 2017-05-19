@@ -12,10 +12,21 @@
 	</head>
 	<body>
 		<?php include_once ("./menu.php"); ?>
+		<div id="globalerror"></div>
 		<form action="./cards.php" method="POST" id="cards">
-			<div class="label">Personnage : </div><input type="text" id="characard" name="characard"><br/>
+			<div class="label">Personnage : </div>
+			<select name="characards" form="cards" id="characards">
+				<?php
+					$characards = $PDO->query("SELECT * FROM characters ORDER BY ID");
+					foreach ($characards as $charow){
+						echo "<option value='" . $charow->ID . "'>" . $charow->pseudo . "</option>";
+					}
+				?>
+			</select><br/>
 			<div class="label">Image : </div><input type="file" id="cardpic" name="cardpic"><br/>
 			<div class="label">Nom : </div><input type="text" id="cardname" name="cardname"><br/>
+			<div class="label">Numéro : </div><input type="number" step="1" min="-3" max="8" id="cardnb" name="cardnb"><br/>
+			<div class="infos">[-3]: Pirate | [-2]: Poule | [-1]: Pyjama | [0]: Jajamaru</div>
 			<div class="label">Niveau : </div><input type="number" step="1" min="1" max="99" id="cardlv" name="cardlv"><br/>
 			<div class="label">Amélioration : </div><input type="number" step="1" min="0" max="15" id="cardup" name="cardup"><br/>
 			<div class="label">Renforcement : </div><input type="number" step="1" min="0" max="100" id="cardreinf" name="cardreinf"><br/>
@@ -28,12 +39,29 @@
 					<td>Personnage</td>
 					<td>Img name</td>
 					<td>Nom</td>
+					<td>Numéro</td>
 					<td>Niveau</td>
 					<td>Amélioration</td>
 					<td>Renforcement</td>
 				</tr>
 			</thead>
 			<tbody>
+				<?php
+					$equipements = $PDO->query("SELECT ca.*, c.pseudo FROM cards ca INNER JOIN characters c ON c.ID = ca.character_id ORDER BY ca.ID");
+					foreach ($equipements as $row){
+						echo "
+							<tr>
+								<td>" . $row->ID ."</td>
+								<td>" . $row->pseudo ."</td>
+								<td>" . $row->image_url ."</td>
+								<td>" . $row->name ."</td>
+								<td>" . $row->cardnumber ." %</td>
+								<td>" . $row->level ." %</td>
+								<td>" . $row->upgrade ." %</td>
+								<td>" . $row->reinforcement ." %</td>
+							</tr>";
+					}
+				?>
 			</tbody>
 		</table>
 	</body>
