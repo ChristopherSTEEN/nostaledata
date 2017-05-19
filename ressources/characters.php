@@ -10,36 +10,7 @@
 		<link rel="icon" type="image/png" href="../img/icone.png">
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="../js/script.js"></script>
-		<script>
-			$(function(){
-				$("#characters").on("submit", function(c){
-					c.preventDefault()
-					data = {
-						pseudo: $("#username").val(),
-						img: $("#charapic").val(),
-						job: $("#charajob").val(),
-						server: $("#charaserv").val(),
-						battlelv: $("#battlelv").val(),
-						battleprog: $("#battleprog").val(),
-						joblv: $("#joblv").val(),
-						jobprog: $("#jobprog").val(),
-						herolv: $("#herolv").val(),
-						heroprog: $("#heroprog").val(),
-						gold: $("#gold").val(),
-						reput: $("#reput").val(),
-						form: "characters"
-					}
-					$.ajax({
-						method: "POST",
-						url: "../ajax/ajaxregister.php",
-						data : data,
-						success: function(success){
-							$("#globalerror").html(success);						
-						}
-					})
-				})
-			})
-		</script>
+		<script src="../js/ajax.js"></script>
 	</head>
 	<body>
 		<?php include_once ("./menu.php"); ?>
