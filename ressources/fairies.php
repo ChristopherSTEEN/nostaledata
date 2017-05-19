@@ -9,11 +9,21 @@
 		<link rel="icon" type="image/png" href="../img/icone.png">
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="../js/script.js"></script>
+		<script src="../js/ajax.js"></script>
 	</head>
 	<body>
 		<?php include_once ("./menu.php"); ?>
+		<div id="globalerror"></div>
 		<form action="./fairies.php" method="POST" id="fairies">
-			<div class="label">Personnage : </div><input type="text" id="charafairie" name="charafairie"><br/>
+			<div class="label">Personnage : </div>
+			<select name="charafairy" form="fairies" id="charafairy">
+				<?php
+					$charaequips = $PDO->query("SELECT * FROM characters ORDER BY ID");
+					foreach ($charaequips as $charow){
+						echo "<option value='" . $charow->ID . "'>" . $charow->pseudo . "</option>";
+					}
+				?>
+			</select><br/>
 			<div class="label">Image : </div><input type="file" id="fairiepic" name="fairiepic"><br/>
 			<div class="label">Nom : </div><input type="text" id="fairiename" name="fairiename"><br/>
 			<div class="label">Elément Feu : </div><input type="number" step="1" min="0" id="fireelem" name="fireelem"><br/>
@@ -36,6 +46,22 @@
 				</tr>
 			</thead>
 			<tbody>
+				<?php
+					$equipements = $PDO->query("SELECT f.*, c.pseudo FROM fairies f INNER JOIN characters c ON c.ID = f.character_id ORDER BY f.ID");
+					foreach ($equipements as $row){
+						echo "
+							<tr>
+								<td>" . $row->ID ."</td>
+								<td>" . $row->pseudo ."</td>
+								<td>" . $row->image_url ."</td>
+								<td>" . $row->name ."</td>
+								<td>" . $row->fireelem ." %</td>
+								<td>" . $row->waterelem ." %</td>
+								<td>" . $row->lightelem ." %</td>
+								<td>" . $row->darkelem ." %</td>
+							</tr>";
+					}
+				?>
 			</tbody>
 		</table>
 	</body>
