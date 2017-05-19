@@ -77,4 +77,50 @@
 			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
 		}
 	}
+	
+	if ($_POST["form"] == "resists"){
+		if ($_POST["chara"] != "" && $_POST["type"] != "" && $_POST["name"] != "" && $_POST["level"] != ""
+		&& $_POST["fire"] != "" && $_POST["water"] != "" && $_POST["light"] != "" && $_POST["dark"] != ""){
+			$resinsert = $PDO->prepare("INSERT INTO resists (character_id, image_url, restype, name, level, fireres, waterres,
+			lightres, darkres) VALUES (:chara, :img, :type, :name, :level, :fire, :water, :light, :dark)");
+			$resinsert->bindValue(':chara', $_POST["chara"]);
+			$resinsert->bindValue(':img', $_POST["img"]);
+			$resinsert->bindValue(':type', $_POST["type"]);
+			$resinsert->bindValue(':name', $_POST["name"]);
+			$resinsert->bindValue(':level', $_POST["level"]);
+			$resinsert->bindValue(':fire', $_POST["fire"]);
+			$resinsert->bindValue(':water', $_POST["water"]);
+			$resinsert->bindValue(':light', $_POST["light"]);
+			$resinsert->bindValue(':dark', $_POST["dark"]);
+			if($resinsert->execute()){
+				echo "<span id='success'>Enregistrement effectué</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}
+		} else {
+			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
+		}
+	}
+	
+	if ($_POST["form"] ==  "fairies"){
+		if ($_POST["chara"] != "" && $_POST["name"] != "" && $_POST["fire"] != "" && $_POST["water"] != "" 
+		&& $_POST["light"] != "" && $_POST["dark"] != ""){
+			$fairyinsert = $PDO->prepare("INSERT INTO fairies (character_id, image_url, name, fireelem, waterelem, lightelem, darkelem) 
+			VALUES (:chara, :img, :name, :fire, :water, :light, :dark)");
+			$fairyinsert->bindValue(':chara', $_POST["chara"]);
+			$fairyinsert->bindValue(':img', $_POST["img"]);
+			$fairyinsert->bindValue(':name', $_POST["name"]);
+			$fairyinsert->bindValue(':fire', $_POST["fire"]);
+			$fairyinsert->bindValue(':water', $_POST["water"]);
+			$fairyinsert->bindValue(':light', $_POST["light"]);
+			$fairyinsert->bindValue(':dark', $_POST["dark"]);
+			if($fairyinsert->execute()){
+				echo "<span id='success'>Enregistrement effectué</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}
+		} else {
+			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
+		}
+	}
 ?>
