@@ -18,8 +18,8 @@
 			<div class="label">Personnage : </div>
 			<select name="charafairy" form="fairies" id="charafairy">
 				<?php
-					$charaequips = $PDO->query("SELECT * FROM characters ORDER BY ID");
-					foreach ($charaequips as $charow){
+					$charafairy = $PDO->query("SELECT * FROM characters ORDER BY ID");
+					foreach ($charafairy as $charow){
 						echo "<option value='" . $charow->ID . "'>" . $charow->pseudo . "</option>";
 					}
 				?>
