@@ -123,4 +123,26 @@
 			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
 		}
 	}
+	
+	if ($_POST["form"] == "cards"){
+		if ($_POST["chara"] != "" && $_POST["name"] != "" && $_POST["number"] != "" && $_POST["level"] != "" 
+		&& $_POST["upgrade"] != "" && $_POST["reinforcement"] != ""){
+			$cardinsert = $PDO->prepare("INSERT INTO cards (character_id, image_url, cardnumber, name, level, upgrade, reinfrocement)
+			VALUES (:chara, :img, :nb, :name, :level, :up, :rein)");
+			$cardinsert->bindValue(':chara', $_POST["chara"]);
+			$cardinsert->bindValue(':img', $_POST["img"]);
+			$cardinsert->bindValue(':nb', $_POST["number"]);
+			$cardinsert->bindValue(':name', $_POST["name"]);
+			$cardinsert->bindValue(':level', $_POST["level"]);
+			$cardinsert->bindValue(':up', $_POST["upgrade"]);
+			$cardinsert->bindValue(':rein', $_POST["reinforcement"]);
+			if($cardinsert->execute()){
+				echo "<span id='success'>Enregistrement effectué</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}
+		} else {
+			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
+		}
+	}
 ?>
