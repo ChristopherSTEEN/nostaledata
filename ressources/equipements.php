@@ -10,31 +10,7 @@
 		<link rel="icon" type="image/png" href="../img/icone.png">
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="../js/script.js"></script>
-		<script>
-			$(function(){
-				$("#equipements").on("submit", function(e){
-					e.preventDefault()
-					data = {
-						chara: $("#charaequip").val(),
-						img: $("#equippic").val(),
-						type: $("#equiptype").val(),
-						name: $("#equipname").val(),
-						level: $("#equiplv").val(),
-						rare: $("#equiprare").val(),
-						upgrade: $("#equipup").val(),
-						form: "equipements"
-					}
-					$.ajax({
-						method: "POST",
-						url: "../ajax/ajaxregister.php",
-						data : data,
-						success: function(success){
-							$("#globalerror").html(success);
-						}
-					})
-				})
-			})
-		</script>
+		<script src="../js/ajax.js"></script>
 	</head>
 	<body>
 		<?php include_once ("./menu.php"); ?>
