@@ -9,29 +9,7 @@
 		<link rel="icon" type="image/png" href="../img/icone.png">
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="../js/script.js"></script>
-		<script>
-			$(function(){
-				$("#jewelries").on("submit", function(j){
-					j.preventDefault()
-					data = {
-						chara: $("#charajewel").val(),
-						img: $("#jewelpic").val(),
-						type: $("#jeweltype").val(),
-						name: $("#jewelname").val(),
-						level: $("#jewellv").val(),
-						form: "jewelries"
-					}
-					$.ajax({
-						method: "POST",
-						url: "../ajax/ajaxregister.php",
-						data : data,
-						success: function(success){
-							$("#globalerror").html(success);
-						}
-					})
-				})
-			})
-		</script>
+		<script src="../js/ajax.js"></script>
 	</head>
 	<body>
 		<?php include_once ("./menu.php"); ?>
