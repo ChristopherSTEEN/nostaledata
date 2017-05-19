@@ -114,4 +114,25 @@ $(function(){
 		})
 	})
 	
+	$("#cards").on("submit", function(c){
+		c.preventDefault()
+		data = {
+			chara: $("#characards").val(),
+			img: $("#cardpic").val(),
+			name: $("#cardname").val(),
+			number: $("#cardnb").val(),
+			level: $("#cardlv").val(),
+			upgrade: $("#cardup").val(),
+			reinforcement: $("#cardreinf").val(),
+			form: "cards"
+		}
+		$.ajax({
+			method: "POST",
+			url: "../ajax/ajaxregister.php",
+			data : data,
+			success: function(success){
+				$("#globalerror").html(success);
+			}
+		})
+	})
 })
