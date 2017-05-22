@@ -175,4 +175,24 @@ $(function(){
 			}
 		})
 	})
+	
+	$("#partequips").on("submit", function(p){
+		p.preventDefault()
+		data = {
+			part: $("#partequip").val(),
+			type: $("#pequiptype").val(),
+			level: $("#pequiplv").val(),
+			rare: $("#pequiprare").val(),
+			upgrade: $("#pequipup").val(),
+			form: "pequips"
+		}
+		$.ajax({
+			method: "POST",
+			url: "../ajax/ajaxregister.php",
+			data : data,
+			success: function(success){
+				$("#globalerror").html(success);
+			}
+		})
+	})
 })
