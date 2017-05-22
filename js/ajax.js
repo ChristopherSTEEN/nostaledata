@@ -195,4 +195,25 @@ $(function(){
 			}
 		})
 	})
+	
+	$("#pets").on("submit", function(p){
+		p.preventDefault()
+		data = {
+			chara: $("#charapets").val(),
+			img: $("#petpic").val(),
+			name: $("#petname").val(),
+			level: $("#petlv").val(),
+			atq: $("#attlv").val(),
+			def: $("#deflv").val(),
+			form: "pets"
+		}
+		$.ajax({
+			method: "POST",
+			url: "../ajax/ajaxregister.php",
+			data : data,
+			success: function(success){
+				$("#globalerror").html(success);
+			}
+		})
+	})
 })
