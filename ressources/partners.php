@@ -9,14 +9,24 @@
 		<link rel="icon" type="image/png" href="../img/icone.png">
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="../js/script.js"></script>
+		<script src="../js/ajax.js"></script>
 	</head>
 	<body>
 		<?php include_once ("./menu.php"); ?>
+		<div id="globalerror"></div>
 		<form action="./partners.php" method="POST" id="partners">
-			<div class="label">Personnage : </div><input type="text" id="charapartner" name="charapartner"><br/>
+			<div class="label">Personnage : </div>
+			<select name="charapartners" form="partners" id="charapartners">
+				<?php
+					$charapartners = $PDO->query("SELECT * FROM characters ORDER BY ID");
+					foreach ($charapartners as $charow){
+						echo "<option value='" . $charow->ID . "'>" . $charow->pseudo . "</option>";
+					}
+				?>
+			</select><br/>
 			<div class="label">Image : </div><input type="file" id="partnerpic" name="partnerpic"><br/>
 			<div class="label">Type : </div>
-			<select name="parttype" form="partners">
+			<select name="parttype" form="partners" id="parttype">
 				<option value="Corps à corps">Corps à corps</option>
 				<option value="Distance">Distance</option>
 				<option value="Magie">Magie</option>
@@ -37,6 +47,20 @@
 				</tr>
 			</thead>
 			<tbody>
+				<?php
+					$partners = $PDO->query("SELECT p.*, c.pseudo FROM partners p INNER JOIN characters c ON c.ID = p.character_id ORDER BY p.ID");
+					foreach ($partners as $row){
+						echo "
+							<tr>
+								<td>" . $row->ID ."</td>
+								<td>" . $row->pseudo ."</td>
+								<td>" . $row->image_url ."</td>
+								<td>" . $row->parttype ."</td>
+								<td>" . $row->name ."</td>
+								<td>" . $row->level ."</td>
+							</tr>";
+					}
+				?>
 			</tbody>
 		</table>
 	</body>
