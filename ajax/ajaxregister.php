@@ -202,4 +202,24 @@
 			echo "<span id='error'>Les champs doivent être rempli!";
 		}
 	}
+	
+	if ($_POST["form"] == "pets"){
+		if ($_POST["chara"] != "" && $_POST["name"] != "" && $_POST["level"] != "" && $_POST["atq"] != "" && $_POST["def"] != ""){
+			$petinsert = $PDO->prepare("INSERT INTO pets (character_id, image_url, name, level, atqlv, deflv)
+			VALUES (:chara, :img, :name, :level, :atq, :def)");
+			$petinsert->bindValue(':chara', $_POST["chara"]);
+			$petinsert->bindValue(':img', $_POST["img"]);
+			$petinsert->bindValue(':name', $_POST["name"]);
+			$petinsert->bindValue(':level', $_POST["level"]);
+			$petinsert->bindValue(':atq', $_POST["atq"]);
+			$petinsert->bindValue(':def', $_POST["def"]);
+			if($petinsert->execute()){
+				echo "<span id='success'>Enregistrement effectué</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}
+		} else {
+			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
+		}
+	}
 ?>
