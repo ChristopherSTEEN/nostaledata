@@ -135,4 +135,44 @@ $(function(){
 			}
 		})
 	})
+	
+	$("#partners").on("submit", function(p){
+		p.preventDefault()
+		data = {
+			chara: $("#charapartners").val(),
+			img: $("#partnerpic").val(),
+			type: $("#parttype").val(),
+			name: $("#partname").val(),
+			level: $("#partlv").val(),
+			form: "partners"
+		}
+		$.ajax({
+			method: "POST",
+			url: "../ajax/ajaxregister.php",
+			data : data,
+			success: function(success){
+				$("#globalerror").html(success);
+			}
+		})
+	})
+	
+	$("#pcards").on("submit", function(p){
+		p.preventDefault()
+		data = {
+			chara: $("#charapcards").val(),
+			img: $("#pcardpic").val(),
+			type: $("#pcardtype").val(),
+			name: $("#pcardname").val(),
+			skillrk: $("#skillrk").val(),
+			form: "pcards"
+		}
+		$.ajax({
+			method: "POST",
+			url: "../ajax/ajaxregister.php",
+			data : data,
+			success: function(success){
+				$("#globalerror").html(success);
+			}
+		})
+	})
 })
