@@ -145,4 +145,42 @@
 			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
 		}
 	}
+	
+	if ($_POST["form"] == "partners"){
+		if ($_POST["chara"] != "" && $_POST["type"] != "" && $_POST["name"] != "" && $_POST["level"] != ""){
+			$partinsert = $PDO->prepare("INSERT INTO partners (character_id, image_url, parttype, name, level) 
+			VALUES (:chara, :img, :type, :name, :level)");
+			$partinsert->bindValue(':chara', $_POST["chara"]);
+			$partinsert->bindValue(':img', $_POST["img"]);
+			$partinsert->bindValue(':type', $_POST["type"]);
+			$partinsert->bindValue(':name', $_POST["name"]);
+			$partinsert->bindValue(':level', $_POST["level"]);
+			if($partinsert->execute()){
+				echo "<span id='success'>Enregistrement effectué</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}
+		} else {
+			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
+		}
+	}
+	
+	if ($_POST["form"] == "pcards"){
+		if $_POST["chara"] != "" && $_POST["type"] != "" && $_POST["name"] != "" && $_POST["skillrk"] != ""){
+			$pcardinsert = $PDO->prepare("INSERT INTO partnercards (character_id, image_url, pcardtype, name, skillsrank) 
+			VALUES (:chara, :img, :type, :name, :skill)");
+			$pcardinsert->bindValue(':chara', $_POST["chara"]);
+			$pcardinsert->bindValue(':img', $_POST["img"]);
+			$pcardinsert->bindValue(':type', $_POST["type"]);
+			$pcardinsert->bindValue(':name', $_POST["name"]);
+			$pcardinsert->bindValue(':skill', $_POST["skillrk"]);
+			if($pcardinsert->execute()){
+				echo "<span id='success'>Enregistrement effectué</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}
+		} else {
+			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
+		}
+	}
 ?>
