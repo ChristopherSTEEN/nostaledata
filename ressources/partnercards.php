@@ -9,20 +9,30 @@
 		<link rel="icon" type="image/png" href="../img/icone.png">
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="../js/script.js"></script>
+		<script src="../js/ajax.js"></script>
 	</head>
 	<body>
 		<?php include_once ("./menu.php"); ?>
-		<form action="./partnercards.php" method="POST" id="partnercards">
-			<div class="label">Personnage : </div><input type="text" id="charapartcard" name="charapartcard"><br/>
-			<div class="label">Image : </div><input type="file" id="partcardpic" name="partcardpic"><br/>
+		<div id="globalerror"></div>
+		<form action="./partnercards.php" method="POST" id="pcards">
+			<div class="label">Personnage : </div>
+			<select name="charapcards" form="pcards" id="charapcards">
+				<?php
+					$charapcards = $PDO->query("SELECT * FROM characters ORDER BY ID");
+					foreach ($charapcards as $charow){
+						echo "<option value='" . $charow->ID . "'>" . $charow->pseudo . "</option>";
+					}
+				?>
+			</select><br/>
+			<div class="label">Image : </div><input type="file" id="pcardpic" name="pcardpic"><br/>
 			<div class="label">Type : </div>
-			<select name="pcardtype" form="partnercards">
+			<select name="pcardtype" form="pcards" id="pcardtype">
 				<option value="Corps à corps">Corps à corps</option>
 				<option value="Distance">Distance</option>
 				<option value="Magie">Magie</option>
 			</select><br/>
-			<div class="label">Nom : </div><input type="text" id="partcardname" name="partcardname"><br/>
-			<div class="label">Rang des skills : </div><input type="text" id="skillrk" name="skillrk"><br/>
+			<div class="label">Nom : </div><input type="text" id="pcardname" name="pcardname"><br/>
+			<div class="label">Rang des skills : </div><input type="text" id="skillrk" name="skillrk" placeholder="X-X-X"><br/>
 			<center><input type="submit" value="Enregistrer la carte pour partenaire" name="submit" id="submit"></center>
 		</form>
 		<table id="pcardtable">
@@ -37,6 +47,20 @@
 				</tr>
 			</thead>
 			<tbody>
+				<?php
+					$pcards = $PDO->query("SELECT p.*, c.pseudo FROM partnercards p INNER JOIN characters c ON c.ID = p.character_id ORDER BY p.ID");
+					foreach ($pcards as $row){
+						echo "
+							<tr>
+								<td>" . $row->ID ."</td>
+								<td>" . $row->pseudo ."</td>
+								<td>" . $row->image_url ."</td>
+								<td>" . $row->pcardtype ."</td>
+								<td>" . $row->name ."</td>
+								<td>" . $row->skillsrank ."</td>
+							</tr>";
+					}
+				?>
 			</tbody>
 		</table>
 	</body>
