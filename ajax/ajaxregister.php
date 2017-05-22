@@ -166,7 +166,7 @@
 	}
 	
 	if ($_POST["form"] == "pcards"){
-		if $_POST["chara"] != "" && $_POST["type"] != "" && $_POST["name"] != "" && $_POST["skillrk"] != ""){
+		if ($_POST["chara"] != "" && $_POST["type"] != "" && $_POST["name"] != "" && $_POST["skillrk"] != ""){
 			$pcardinsert = $PDO->prepare("INSERT INTO partnercards (character_id, image_url, pcardtype, name, skillsrank) 
 			VALUES (:chara, :img, :type, :name, :skill)");
 			$pcardinsert->bindValue(':chara', $_POST["chara"]);
@@ -181,6 +181,25 @@
 			}
 		} else {
 			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
+		}
+	}
+	
+	if ($_POST["form"] == "pequips"){
+		if ($_POST["part"] != "" && $_POST["type"] != "" && $_POST["level"] != "" && $_POST["upgrade"] != ""){
+			$pequipinsert = $PDO->prepare("INSERT INTO partnerequipments (partner_id, pequiptype, level, rare, upgrade) 
+			VALUES (:part, :type, :level, :rare, :upgrade)");
+			$pequipinsert->bindValue(':part', $_POST["part"]);
+			$pequipinsert->bindValue(':type', $_POST["type"]);
+			$pequipinsert->bindValue(':level', $_POST["level"]);
+			$pequipinsert->bindValue(':rare', $_POST["rare"]);
+			$pequipinsert->bindValue(':upgrade', $_POST["upgrade"]);
+			if($pequipinsert->execute()){
+				echo "<span id='success'>Enregistrement effectué</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}
+		} else {
+			echo "<span id='error'>Les champs doivent être rempli!";
 		}
 	}
 ?>
