@@ -237,6 +237,18 @@ $(function(){
 	
 	$(".delete").click(function(d){
 		d.preventDefault()
+		data = {
+			id: parseInt($(this).attr("name")),
+			table: $(this).attr("href")
+		}
+		$.ajax({
+			method: "POST",
+			url: "../ajax/ajaxdelete.php",
+			data : data,
+			success: function(success){
+				$("#globalerror").html(success)
+			}
+		})
 	})
 	
 	$("#avensubmit").click(function(s){
