@@ -216,4 +216,85 @@ $(function(){
 			}
 		})
 	})
+	
+	$(".edit").click(function(e){
+		e.preventDefault()
+		data = {
+			id: parseInt($(this).attr("name")),
+			table: $(this).attr("href"),
+			action: "edit"
+		}
+		$.ajax({
+			method: "POST",
+			url: "../ajax/ajaxedit.php",
+			data : data,
+			success: function(success){
+				$("#globalerror").html(success)
+				window.location.replace("../ressources/edit.php").delay(10000)
+			}
+		})
+	})
+	
+	$(".delete").click(function(d){
+		d.preventDefault()
+	})
+	
+	$("#avensubmit").click(function(s){
+		s.preventDefault()
+		data = {
+			metier: $("#charajob").val(),
+			img: $("#charapic").val(),
+			battlelv: $("#battlelv").val(),
+			battleprog: $("#battleprog").val(),
+			joblv: $("#joblv").val(),
+			jobprog: $("#jobprog").val(),
+			herolv: $("#herolv").val(),
+			heroprog: $("#heroprog").val(),
+			gold: $("#gold").val(),
+			reput: $("#reput").val(),
+			action: "avenedit"
+		}
+		$.ajax({
+			method: "POST",
+			url: "../ajax/ajaxedit.php",
+			data : data,
+			success: function(success){
+				if (success == "<span id='success'>Enregistrement effectué</span>"){
+					$("#globalerror").html(success)
+					window.location.replace("../ressources/characters.php").delay(10000)
+				} else {
+					$("#globalerror").html(success)
+				}
+			}
+		})
+	})
+	
+	$("#charasubmit").click(function(s){
+		s.preventDefault()
+		data = {
+			img: $("#charapic").val(),
+			battlelv: $("#battlelv").val(),
+			battleprog: $("#battleprog").val(),
+			joblv: $("#joblv").val(),
+			jobprog: $("#jobprog").val(),
+			herolv: $("#herolv").val(),
+			heroprog: $("#heroprog").val(),
+			gold: $("#gold").val(),
+			reput: $("#reput").val(),
+			action: "charaedit"
+		}
+		$.ajax({
+			method: "POST",
+			url: "../ajax/ajaxedit.php",
+			data : data,
+			success: function(success){
+				if (success == "<span id='success'>Enregistrement effectué</span>"){
+					$("#globalerror").html(success)
+					window.location.replace("../ressources/characters.php").delay(10000)
+				} else {
+					$("#globalerror").html(success)
+				}
+			}
+		})
+	})
 })
