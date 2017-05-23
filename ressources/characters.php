@@ -17,7 +17,7 @@
 		<div id="globalerror"></div>
 		<form action="./characters.php" method="POST" id="characters">
 			<div class="label">Pseudo : </div><input type="text" id="username" name="username"><br/>
-			<div class="label">Image : </div><input type="file" id="charapic" name="charapic"><br/>
+			<div class="label">Nom de l'image : </div><input type="text" id="charapic" name="charapic"><br/>
 			<div class="label">Métier : </div>
 			<select name="job" form="characters" id="charajob">
 				<option value="Aventurier">Aventurier</option>
@@ -45,7 +45,7 @@
 		<table id="charatable">
 			<thead>
 				<tr>
-					<td>ID</td>
+					<td>Actions</td>
 					<td>Pseudo</td>
 					<td>Img name</td>
 					<td>Métier</td>
@@ -66,7 +66,7 @@
 					foreach ($characters as $row){
 						echo "
 							<tr>
-								<td>" . $row->ID ."</td>
+								<td><a href='characters' class='edit' name='" . $row->ID . "'><img src='../img/pen.png' alt='Editer'></a><a href='#' class='delete' name='" . $row->ID . "'><img src='../img/bin.png' alt='Supprimer'></a></td>
 								<td>" . $row->pseudo ."</td>
 								<td>" . $row->image_url ."</td>
 								<td>" . $row->metier ."</td>
