@@ -66,7 +66,7 @@
 					foreach ($characters as $row){
 						echo "
 							<tr>
-								<td><a href='characters' class='edit' name='" . $row->ID . "'><img src='../img/pen.png' alt='Editer'></a><a href='#' class='delete' name='" . $row->ID . "'><img src='../img/bin.png' alt='Supprimer'></a></td>
+								<td><a href='characters' class='edit' name='" . $row->ID . "'><img src='../img/pen.png' alt='Editer'></a><a href='characters' class='delete' name='" . $row->ID . "'><img src='../img/bin.png' alt='Supprimer'></a></td>
 								<td>" . $row->pseudo ."</td>
 								<td>" . $row->image_url ."</td>
 								<td>" . $row->metier ."</td>
