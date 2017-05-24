@@ -7,6 +7,11 @@
 		echo "Redirection dans 2 secondes...";
 	}
 	
+	if ($_POST["action"] == "cancel"){
+		session_destroy();
+		echo "Annulation des changements...";
+	}
+	
 	if ($_POST["action"] == "charaedit"){
 		if ($_POST["battlelv"] != "" && $_POST["battleprog"] != "" && $_POST["joblv"] != "" && $_POST["jobprog"] != "" 
 		&& $_POST["herolv"] != "" && $_POST["heroprog"] != "" && $_POST["gold"] != "" && $_POST["reput"] != ""){
@@ -22,11 +27,11 @@
 			$charaupdate->bindValue(':reput', $_POST["reput"]);
 			$charaupdate->bindValue(':id', $_SESSION["id"]);
 			if($charaupdate->execute()){
-					session_destroy();
-					echo "<span id='success'>Enregistrement effectué</span>";
-				} else {
-					echo "<span id='error'>Erreur dans l'enregistrement</span>";
-				}
+				session_destroy();
+				echo "<span id='success'>Enregistrement effectué</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}
 		} else {
 			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
 		}
@@ -49,11 +54,29 @@
 			$avenupdate->bindValue(':reput', $_POST["reput"]);
 			$avenupdate->bindValue(':id', $_SESSION["id"]);
 			if($avenupdate->execute()){
-					session_destroy();
-					echo "<span id='success'>Enregistrement effectué</span>";
-				} else {
-					echo "<span id='error'>Erreur dans l'enregistrement</span>";
-				}
+				session_destroy();
+				echo "<span id='success'>Enregistrement effectué</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}
+		} else {
+			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
+		}
+	}
+	
+	if ($_POST["action"] == "cardedit"){
+		if ($_POST["chara"] != "" && $_POST["level"] != "" && $_POST["upgrade"] != "" && $_POST["reinf"] != ""){
+			$cardupdate = $PDO->prepare("UPDATE cards SET character_id=:chara, level=:level, upgrade=:upgrade, reinforcement=:reinf");
+			$cardupdate->bindValue(':chara', $_POST["chara"]);
+			$cardupdate->bindValue(':level', $_POST["level"]);
+			$cardupdate->bindValue(':upgrade', $_POST["upgrade"]);
+			$cardupdate->bindValue(':reinf', $_POST["reinf"]);
+			if($cardupdate->execute()){
+				session_destroy();
+				echo "<span id='success'>Enregistrement effectué</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}
 		} else {
 			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
 		}
