@@ -251,6 +251,22 @@ $(function(){
 		})
 	})
 	
+	$("#cancel").click(function(c){
+		c.preventDefault()
+		data = {
+			action: "cancel"
+		}
+		$.ajax({
+			method: "POST",
+			url: "../ajax/ajaxedit.php",
+			data : data,
+			success: function(success){
+				$("#globalerror").html(success)
+				window.history.back().delay(10000)
+			}
+		})
+	})
+	
 	$("#avensubmit").click(function(s){
 		s.preventDefault()
 		data = {
@@ -302,7 +318,32 @@ $(function(){
 			success: function(success){
 				if (success == "<span id='success'>Enregistrement effectué</span>"){
 					$("#globalerror").html(success)
-					window.location.replace("../ressources/characters.php").delay(10000)
+					window.location.replace("../ressources/characters.php").delay(2000)
+				} else {
+					$("#globalerror").html(success)
+				}
+			}
+		})
+	})
+	
+	$("#cardsubmit").click(function(s){
+		s.preventDefault()
+		data = {
+			chara: $("#characards").val(),
+			img: $("#cardpic").val(),
+			level: $("#cardlv").val(),
+			upgrade: $("#cardup").val(),
+			reinf: $("#cardreinf").val(),
+			action: "cardedit"
+		}
+		$.ajax({
+			method: "POST",
+			url: "../ajax/ajaxedit.php",
+			data : data,
+			success: function(success){
+				if (success == "<span id='success'>Enregistrement effectué</span>"){
+					$("#globalerror").html(success)
+					window.location.replace("../ressources/cards.php").delay(2000)
 				} else {
 					$("#globalerror").html(success)
 				}
