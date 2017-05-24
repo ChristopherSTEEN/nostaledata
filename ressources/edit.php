@@ -23,7 +23,7 @@
 		<div id="globalerror"></div>
 		<form action="edit.php" method="POST" id="charaedit">
 			<div class="label">Pseudo : </div><input type="text" id="charaname" name="charaname" value="<?php echo $row->pseudo; ?>" disabled><br/>
-			<div class="label">Nom de l'image : </div><input type="text" id="charapic" name="charapic"><br/>
+			<div class="label">Nom de l'image : </div><input type="text" id="charapic" name="charapic" value="<?php echo $row->image_url; ?>"><br/>
 			<div class="label">Métier : </div>
 				<?php if ($row->metier == "Aventurier"){ ?>
 			<select name="job" form="characters" id="charajob">
@@ -66,14 +66,53 @@
 					}
 				?>
 			</select><br/>
-			<div class="label">Nom de l'image : </div><input type="text" id="cardpic" name="cardpic"><br/>
+			<div class="label">Nom de l'image : </div><input type="text" id="cardpic" name="cardpic" value="<?php echo $row->image_url; ?>"><br/>
 			<div class="label">Nom : </div><input type="text" id="cardname" name="cardname" value="<?php echo $row->name; ?>" disabled><br/>
 			<div class="label">Numéro : </div><input type="number" step="1" min="-3" max="8" id="cardnb" name="cardnb" value="<?php echo $row->cardnumber; ?>" disabled><br/>
 			<div class="infos">[-3]: Pirate | [-2]: Poule | [-1]: Pyjama | [0]: Jajamaru</div>
-			<div class="label">Niveau : </div><input type="number" step="1" min="1" max="99" id="cardlv" name="cardlv"><br/>
-			<div class="label">Amélioration : </div><input type="number" step="1" min="0" max="15" id="cardup" name="cardup"><br/>
-			<div class="label">Renforcement : </div><input type="number" step="1" min="0" max="100" id="cardreinf" name="cardreinf"><br/>
-			<center><input type="submit" value="Editer le personnage" name="submit" id="cardsubmit">
+			<div class="label">Niveau : </div><input type="number" step="1" min="1" max="99" id="cardlv" name="cardlv" value="<?php echo $row->level; ?>"><br/>
+			<div class="label">Amélioration : </div><input type="number" step="1" min="0" max="15" id="cardup" name="cardup" value="<?php echo $row->upgrade; ?>"><br/>
+			<div class="label">Renforcement : </div><input type="number" step="1" min="0" max="100" id="cardreinf" name="cardreinf" value="<?php echo $row->reinforcement; ?>"><br/>
+			<center><input type="submit" value="Editer la carte SP" name="submit" id="cardsubmit">
+			<input type="submit" value="Annuler les changements" name="submit" id="cancel"></center>
+		</form>
+		<?php }}} ?>
+		<?php
+			if ($_SESSION["table"] == "equipements"){
+				$equipedit = $PDO->query("SELECT * FROM equipments ORDER BY ID");
+				foreach ($equipedit as $row){
+					if ($row->ID == $_SESSION["id"]){
+		?>
+		<form action="./equipements.php" method="POST" id="equipements">
+			<div class="label">Personnage : </div>
+			<select name="charaequip" form="equipements" id="charaequip">
+				<?php
+					$charaequips = $PDO->query("SELECT * FROM characters ORDER BY ID");
+					foreach ($charaequips as $charow){
+						echo "<option value='" . $charow->ID . "'>" . $charow->pseudo . "</option>";
+					}
+				?>
+			</select><br/>
+			<div class="label">Image : </div><input type="text" id="equippic" name="equippic" value="<?php echo $row->image_url; ?>"><br/>
+			<div class="label">Type : </div><input type="text" id="equiptype" name="equiptype" value="<?php echo $row->equiptype; ?>" disabled><br/>
+			<div class="label">Nom : </div><input type="text" id="equipname" name="equipname" value="<?php echo $row->name; ?>" disabled><br/>
+			<div class="label">Niveau : </div><input type="number" step="1" min="1" max="99" id="equiplv" name="equiplv" value="<?php echo $row->level ?>"><br/>
+			<div class="label">Rareté : </div>
+			<select name="equiprare" form="equipements" id="equiprare">
+				<option value="Endommagé">Endommagé</option>
+				<option value="Bas-Niveau">Bas-Niveau</option>
+				<option value="">Aucun</option>
+				<option value="Utile">Utile</option>
+				<option value="Bon">Bon</option>
+				<option value="Haute-qualité">Haute-qualité</option>
+				<option value="Excellent">Excellent</option>
+				<option value="Ancestral">Ancestral</option>
+				<option value="Mystérieux">Mystérieux</option>
+				<option value="Légendaire">Légendaire</option>
+				<option value="Phénoménal">Phénoménal</option>
+			</select><br/>
+			<div class="label">Amélioration : </div><input type="number" step="1" min="0" max="10" id="equipup" name="equipup" value="<?php echo $row->upgrade; ?>"><br/>
+			<center><input type="submit" value="Editer l'équipement" name="submit" id="equipsubmit">
 			<input type="submit" value="Annuler les changements" name="submit" id="cancel"></center>
 		</form>
 		<?php }}} ?>
