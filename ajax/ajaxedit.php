@@ -15,8 +15,9 @@
 	if ($_POST["action"] == "charaedit"){
 		if ($_POST["battlelv"] != "" && $_POST["battleprog"] != "" && $_POST["joblv"] != "" && $_POST["jobprog"] != "" 
 		&& $_POST["herolv"] != "" && $_POST["heroprog"] != "" && $_POST["gold"] != "" && $_POST["reput"] != ""){
-			$charaupdate = $PDO->prepare("UPDATE characters SET battlelv=:battlelv, battleprog=:battleprog, joblv=:joblv,
+			$charaupdate = $PDO->prepare("UPDATE characters SET image_url=:img, battlelv=:battlelv, battleprog=:battleprog, joblv=:joblv,
 			jobprog=:jobprog, herolv=:herolv, heroprog=:heroprog, gold=:gold, reput=:reput WHERE ID=:id");
+			$charaupdate->bindValue(':img', $_POST["img"]);
 			$charaupdate->bindValue(':battlelv', $_POST["battlelv"]);
 			$charaupdate->bindValue(':battleprog', $_POST["battleprog"]);
 			$charaupdate->bindValue(':joblv', $_POST["joblv"]);
@@ -28,7 +29,7 @@
 			$charaupdate->bindValue(':id', $_SESSION["id"]);
 			if($charaupdate->execute()){
 				session_destroy();
-				echo "<span id='success'>Enregistrement effectué</span>";
+				echo "<span id='success'>Changement effectué</span>";
 			} else {
 				echo "<span id='error'>Erreur dans l'enregistrement</span>";
 			}
@@ -41,8 +42,9 @@
 		if ($_POST["metier"] != "" && $_POST["battlelv"] != "" && $_POST["battleprog"] != "" && $_POST["joblv"] != "" 
 		&& $_POST["jobprog"] != "" && $_POST["herolv"] != "" && $_POST["heroprog"] != "" && $_POST["gold"] != "" 
 		&& $_POST["reput"] != ""){
-			$avenupdate = $PDO->prepare("UPDATE characters SET metier=:job, battlelv=:battlelv, battleprog=:battleprog, joblv=:joblv,
+			$avenupdate = $PDO->prepare("UPDATE characters SET image_url=:img, metier=:job, battlelv=:battlelv, battleprog=:battleprog, joblv=:joblv,
 			jobprog=:jobprog, herolv=:herolv, heroprog=:heroprog, gold=:gold, reput=:reput WHERE ID=:id");
+			$avenupdate->bindValue(':img', $_POST["img"]);
 			$avenupdate->bindValue(':job', $_POST["metier"]);
 			$avenupdate->bindValue(':battlelv', $_POST["battlelv"]);
 			$avenupdate->bindValue(':battleprog', $_POST["battleprog"]);
@@ -55,7 +57,7 @@
 			$avenupdate->bindValue(':id', $_SESSION["id"]);
 			if($avenupdate->execute()){
 				session_destroy();
-				echo "<span id='success'>Enregistrement effectué</span>";
+				echo "<span id='success'>Changement effectué</span>";
 			} else {
 				echo "<span id='error'>Erreur dans l'enregistrement</span>";
 			}
@@ -66,14 +68,33 @@
 	
 	if ($_POST["action"] == "cardedit"){
 		if ($_POST["chara"] != "" && $_POST["level"] != "" && $_POST["upgrade"] != "" && $_POST["reinf"] != ""){
-			$cardupdate = $PDO->prepare("UPDATE cards SET character_id=:chara, level=:level, upgrade=:upgrade, reinforcement=:reinf");
+			$cardupdate = $PDO->prepare("UPDATE cards SET character_id=:chara, image_url=:img, level=:level, upgrade=:upgrade, reinforcement=:reinf");
 			$cardupdate->bindValue(':chara', $_POST["chara"]);
+			$cardupdate->bindValue(':img', $_POST["img"]);
 			$cardupdate->bindValue(':level', $_POST["level"]);
 			$cardupdate->bindValue(':upgrade', $_POST["upgrade"]);
 			$cardupdate->bindValue(':reinf', $_POST["reinf"]);
 			if($cardupdate->execute()){
 				session_destroy();
-				echo "<span id='success'>Enregistrement effectué</span>";
+				echo "<span id='success'>Changement effectué</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}
+		} else {
+			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
+		}
+	}
+	
+	if ($_POST["action"] == "equipedit"){
+		if ($_POST["chara"] != "" && $_POST["rare"] != "" && $_POST["upgrade"] != ""){
+			$equipupdate = $PDO->prepare("UPDATE equipments SET character_id=:chara, image_url=:img, rare=:rare, upgrade=:up");
+			$equipupdate->bindValue(':chara', $_POST["chara"]);
+			$equipupdate->bindValue(':img', $_POST["img"]);
+			$equipupdate->bindValue(':rare', $_POST["rare"]);
+			$equipupdate->bindValue(':up', $_POST["upgrade"]);
+			if($cardupdate->execute()){
+				session_destroy();
+				echo "<span id='success'>Changement effectué</span>";
 			} else {
 				echo "<span id='error'>Erreur dans l'enregistrement</span>";
 			}
