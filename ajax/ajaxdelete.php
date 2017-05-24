@@ -69,4 +69,14 @@
 			echo "<span id='error'>Une erreur est survenue dans la suppression des cartes SP</span>";
 		}
 	}
+	
+	if ($_POST["table"] == "cards"){
+		$carddelete = $PDO->prepare("DELETE FROM cards WHERE ID = :id");
+		$carddelete->bindValue(':id', $_POST["id"]);
+		if ($carddelete->execute()){
+			echo "<span id='success'>La carte SP a bien été supprimé</span>";
+		} else {
+			echo "<span id='error'>Une erreur est survenue dans la suppression du personnage</span>";
+		}
+	}
 ?>
