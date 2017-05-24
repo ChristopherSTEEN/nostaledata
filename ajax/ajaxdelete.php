@@ -74,7 +74,17 @@
 		$carddelete = $PDO->prepare("DELETE FROM cards WHERE ID = :id");
 		$carddelete->bindValue(':id', $_POST["id"]);
 		if ($carddelete->execute()){
-			echo "<span id='success'>La carte SP a bien été supprimé</span>";
+			echo "<span id='success'>La carte SP a bien été supprimée</span>";
+		} else {
+			echo "<span id='error'>Une erreur est survenue dans la suppression du personnage</span>";
+		}
+	}
+	
+	if ($_POST["table"] == "equipements"){
+		$equipdelete = $PDO->prepare("DELETE FROM equipments WHERE ID = :id");
+		$equipdelete->bindValue(':id', $_POST["id"]);
+		if ($equipdelete->execute()){
+			echo "<span id='success'>L'équipement a bien été supprimé</span>";
 		} else {
 			echo "<span id='error'>Une erreur est survenue dans la suppression du personnage</span>";
 		}
