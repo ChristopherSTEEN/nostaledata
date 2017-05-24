@@ -287,7 +287,7 @@ $(function(){
 			url: "../ajax/ajaxedit.php",
 			data : data,
 			success: function(success){
-				if (success == "<span id='success'>Enregistrement effectué</span>"){
+				if (success == "<span id='success'>Changement effectué</span>"){
 					$("#globalerror").html(success)
 					window.location.replace("../ressources/characters.php").delay(10000)
 				} else {
@@ -316,7 +316,7 @@ $(function(){
 			url: "../ajax/ajaxedit.php",
 			data : data,
 			success: function(success){
-				if (success == "<span id='success'>Enregistrement effectué</span>"){
+				if (success == "<span id='success'>changement effectué</span>"){
 					$("#globalerror").html(success)
 					window.location.replace("../ressources/characters.php").delay(2000)
 				} else {
@@ -341,9 +341,33 @@ $(function(){
 			url: "../ajax/ajaxedit.php",
 			data : data,
 			success: function(success){
-				if (success == "<span id='success'>Enregistrement effectué</span>"){
+				if (success == "<span id='success'>Changement effectué</span>"){
 					$("#globalerror").html(success)
 					window.location.replace("../ressources/cards.php").delay(2000)
+				} else {
+					$("#globalerror").html(success)
+				}
+			}
+		})
+	})
+	
+	$("#equipsubmit").click(function(s){
+		s.preventDefault()
+		data = {
+			chara: $("#charaequip").val(),
+			img: $("#equippic").val(),
+			rare: $("#equiprare").val(),
+			upgrade: $("#equipup").val(),
+			action: "equipedit"
+		}
+		$.ajax({
+			method: "POST",
+			url: "../ajax/ajaxedit.php",
+			data : data,
+			success: function(success){
+				if (success == "<span id='success'>Changement effectué</span>"){
+					$("#globalerror").html(success)
+					window.location.replace("../ressources/equipements.php").delay(2000)
 				} else {
 					$("#globalerror").html(success)
 				}
