@@ -23,7 +23,7 @@
 					}
 				?>
 			</select><br/>
-			<div class="label">Image : </div><input type="file" id="cardpic" name="cardpic"><br/>
+			<div class="label">Nom de l'image : </div><input type="text" id="cardpic" name="cardpic"><br/>
 			<div class="label">Nom : </div><input type="text" id="cardname" name="cardname"><br/>
 			<div class="label">Numéro : </div><input type="number" step="1" min="-3" max="8" id="cardnb" name="cardnb"><br/>
 			<div class="infos">[-3]: Pirate | [-2]: Poule | [-1]: Pyjama | [0]: Jajamaru</div>
@@ -51,7 +51,7 @@
 					foreach ($equipements as $row){
 						echo "
 							<tr>
-								<td>" . $row->ID ."</td>
+								<td><a href='cards' class='edit' name='" . $row->ID . "'><img src='../img/pen.png' alt='Editer'></a><a href='cards' class='delete' name='" . $row->ID . "'><img src='../img/bin.png' alt='Supprimer'></a></td>
 								<td>" . $row->pseudo ."</td>
 								<td>" . $row->image_url ."</td>
 								<td>" . $row->name ."</td>
