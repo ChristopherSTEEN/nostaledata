@@ -46,7 +46,35 @@
 			<div class="label">Or : </div><input type="number" step="1" min="0" id="gold" name="gold" value="<?php echo $row->gold; ?>"><br/>
 			<div class="label">Réputation : </div><input type="number" step="1" min="0" id="reput" name="reput" value="<?php echo $row->reput; ?>"><br/>
 			<center><input type="submit" value="Editer le personnage" name="submit" id="<?php if ($row->metier == "Aventurier"){ echo "avensubmit"; } else { echo "charasubmit"; } ?>">
-			<input type="submit" value="Annuler les changements" name="submit" id="characancel"></center>
+			<input type="submit" value="Annuler les changements" name="submit" id="cancel"></center>
+		</form>
+		<?php }}} ?>
+		<?php
+			if ($_SESSION["table"] == "cards"){
+				$cardedit = $PDO->query("SELECT * FROM cards ORDER BY ID");
+				foreach ($cardedit as $row){
+					if ($row->ID == $_SESSION["id"]){
+		?>
+		<center><h1>Editer une carte de spécialiste</h1></center>
+		<form action="./cards.php" method="POST" id="cards">
+			<div class="label">Personnage : </div>
+			<select name="characards" form="cards" id="characards">
+				<?php
+					$characards = $PDO->query("SELECT * FROM characters ORDER BY ID");
+					foreach ($characards as $charow){
+						echo "<option value='" . $charow->ID . "'>" . $charow->pseudo . "</option>";
+					}
+				?>
+			</select><br/>
+			<div class="label">Nom de l'image : </div><input type="text" id="cardpic" name="cardpic"><br/>
+			<div class="label">Nom : </div><input type="text" id="cardname" name="cardname" value="<?php echo $row->name; ?>" disabled><br/>
+			<div class="label">Numéro : </div><input type="number" step="1" min="-3" max="8" id="cardnb" name="cardnb" value="<?php echo $row->cardnumber; ?>" disabled><br/>
+			<div class="infos">[-3]: Pirate | [-2]: Poule | [-1]: Pyjama | [0]: Jajamaru</div>
+			<div class="label">Niveau : </div><input type="number" step="1" min="1" max="99" id="cardlv" name="cardlv"><br/>
+			<div class="label">Amélioration : </div><input type="number" step="1" min="0" max="15" id="cardup" name="cardup"><br/>
+			<div class="label">Renforcement : </div><input type="number" step="1" min="0" max="100" id="cardreinf" name="cardreinf"><br/>
+			<center><input type="submit" value="Editer le personnage" name="submit" id="cardsubmit">
+			<input type="submit" value="Annuler les changements" name="submit" id="cancel"></center>
 		</form>
 		<?php }}} ?>
 	</body>
