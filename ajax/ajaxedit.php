@@ -102,4 +102,24 @@
 			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
 		}
 	}
+	
+	if ($_POST["action"] == "fairieedit"){
+		if ($_POST["chara"] != "" && $_POST["fire"] != "" && $_POST["water"] != "" && $_POST["light"] != "" && $_POST["dark"] != ""){
+			$fairieupdate = $PDO->prepare("UPDATE fairies SET character_id=:chara, image_url=:img, fireelem=:fire, waterelem=:water, lightelem=:light, darkelem=:dark");
+			$fairieupdate->bindValue(':chara', $_POST["chara"]);
+			$fairieupdate->bindValue(':img', $_POST["img"]);
+			$fairieupdate->bindValue(':fire', $_POST["fire"]);
+			$fairieupdate->bindValue(':water', $_POST["water"]);
+			$fairieupdate->bindValue(':light', $_POST["light"]);
+			$fairieupdate->bindValue(':dark', $_POST["dark"]);
+			if($fairieupdate->execute()){
+				session_destroy();
+				echo "<span id='success'>Changement effectué</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}
+		} else {
+			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
+		}
+	}
 ?>
