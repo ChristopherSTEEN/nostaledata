@@ -41,7 +41,7 @@
 			<div class="label">Progression Cb : </div><input type="number" step="0.01" min="0" max="100" id="battleprog" name="battleprog" value="<?php echo $row->battleprog; ?>"><br/>
 			<div class="label">Nv Métier : </div><input type="number" step="1" min="1" max="80" id="joblv" name="joblv" value="<?php echo $row->joblv; ?>"><br/>
 			<div class="label">Progression Mt : </div><input type="number" step="0.01" min="0" max="100" id="jobprog" name="jobprog" value="<?php echo $row->jobprog; ?>"><br/>
-			<div class="label">Nv Héroïque : </div><input type="number" step="1" min="0" max="30" id="herolv" name="herolv" value="<?php echo $row->herolv; ?>"><br/>
+			<div class="label">Nv Héroïque : </div><input type="number" step="1" min="0" max="50" id="herolv" name="herolv" value="<?php echo $row->herolv; ?>"><br/>
 			<div class="label">Progression Hr : </div><input type="number" step="0.01" min="0" max="100" id="heroprog" name="heroprog" value="<?php echo $row->heroprog; ?>"><br/>
 			<div class="label">Or : </div><input type="number" step="1" min="0" id="gold" name="gold" value="<?php echo $row->gold; ?>"><br/>
 			<div class="label">Réputation : </div><input type="number" step="1" min="0" id="reput" name="reput" value="<?php echo $row->reput; ?>"><br/>
@@ -113,6 +113,32 @@
 			</select><br/>
 			<div class="label">Amélioration : </div><input type="number" step="1" min="0" max="10" id="equipup" name="equipup" value="<?php echo $row->upgrade; ?>"><br/>
 			<center><input type="submit" value="Editer l'équipement" name="submit" id="equipsubmit">
+			<input type="submit" value="Annuler les changements" name="submit" id="cancel"></center>
+		</form>
+		<?php }}} ?>
+		<?php 
+			if ($_SESSSION["table"] == "fairies"){
+				$fairieedit = $PDO->query("SELECT * FROM fairies ORDER BY ID");
+				foreach ($fairieedit as $row){
+					if ($row->ID == $_SESSION["id"]){
+		?>
+		<form action="./fairies.php" method="POST" id="fairies">
+			<div class="label">Personnage : </div>
+			<select name="charafairy" form="fairies" id="charafairy">
+				<?php
+					$charafairy = $PDO->query("SELECT * FROM characters ORDER BY ID");
+					foreach ($charafairy as $charow){
+						echo "<option value='" . $charow->ID . "'>" . $charow->pseudo . "</option>";
+					}
+				?>
+			</select><br/>
+			<div class="label">Image : </div><input type="text" id="fairiepic" name="fairiepic" value="<?php $row->image_url; ?>"><br/>
+			<div class="label">Nom : </div><input type="text" id="fairiename" name="fairiename" value="<?php $row->name; ?>" disabled><br/>
+			<div class="label">Elément Feu : </div><input type="number" step="1" min="0" id="fireelem" name="fireelem" value="<?php $row->fireelem; ?>"><br/>
+			<div class="label">Elément Eau : </div><input type="number" step="1" min="0" id="waterelem" name="waterelem" value="<?php $row->waterelem; ?>"><br/>
+			<div class="label">Elément Lumière : </div><input type="number" step="1" min="0" id="lightelem" name="lightelem" value="<?php $row->lightelem; ?>"><br/>
+			<div class="label">Elément Obscure : </div><input type="number" step="1" min="0" id="darkelem" name="darkelem" value="<?php $row->darkelem; ?>"><br/>
+			<center><input type="submit" value="Editer la fée" name="submit" id="fairiesubmit">
 			<input type="submit" value="Annuler les changements" name="submit" id="cancel"></center>
 		</form>
 		<?php }}} ?>
