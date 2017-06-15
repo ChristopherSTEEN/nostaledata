@@ -35,7 +35,7 @@
 		<table id="fairietable">
 			<thead>
 				<tr>
-					<td>ID</td>
+					<td><a href='fairies' class='edit' name='" . $row->ID . "'><img src='../img/pen.png' alt='Editer'></a><a href='fairies' class='delete' name='" . $row->ID . "'><img src='../img/bin.png' alt='Supprimer'></a></td>
 					<td>Personnage</td>
 					<td>Img name</td>
 					<td>Nom</td>
