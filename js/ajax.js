@@ -374,4 +374,30 @@ $(function(){
 			}
 		})
 	})
+	
+	$("#fairiesubmit").click(function(s){
+		s.preventDefault()
+		data = {
+			chara: $("#charafairie").val(),
+			img: $("#fairiepic").val(),
+			fire: $("#fireelem").val(),
+			water: $("#waterelem").val(),
+			light: $("#lightelem").val(),
+			dark: $("#darkelem").val(),
+			action: "fairieedit"
+		}
+		$.ajax({
+			method: "POST",
+			url: "../ajax/ajaxedit.php",
+			data : data,
+			success: function(success){
+				if (success == "<span id='success'>Changement effectué</span>"){
+					$("#globalerror").html(success)
+					window.location.replace("../ressources/fairies.php").delay(2000)
+				} else {
+					$("#globalerror").html(success)
+				}
+			}
+		})
+	})
 })
