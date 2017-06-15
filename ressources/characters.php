@@ -36,7 +36,7 @@
 			<div class="label">Progression Cb : </div><input type="number" step="0.01" min="0" max="100" id="battleprog" name="battleprog"><br/>
 			<div class="label">Nv Métier : </div><input type="number" step="1" min="1" max="80" id="joblv" name="joblv"><br/>
 			<div class="label">Progression Mt : </div><input type="number" step="0.01" min="0" max="100" id="jobprog" name="jobprog"><br/>
-			<div class="label">Nv Héroïque : </div><input type="number" step="1" min="0" max="30" id="herolv" name="herolv"><br/>
+			<div class="label">Nv Héroïque : </div><input type="number" step="1" min="0" max="50" id="herolv" name="herolv"><br/>
 			<div class="label">Progression Hr : </div><input type="number" step="0.01" min="0" max="100" id="heroprog" name="heroprog"><br/>
 			<div class="label">Or : </div><input type="number" step="1" min="0" id="gold" name="gold"><br/>
 			<div class="label">Réputation : </div><input type="number" step="1" min="0" id="reput" name="reput"><br/>
