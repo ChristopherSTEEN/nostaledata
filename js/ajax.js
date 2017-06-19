@@ -445,4 +445,27 @@ $(function(){
 			}
 		})
 	})
+	
+	$("#pequipsubmit").click(function(s){
+		s.preventDefault()
+		data = {
+			level: $("#pequiplevel").val(),
+			rare: $("#pequiprare").val(),
+			upgrade: $("#pequipup").val(),
+			action: "pequipedit"
+		}
+		$.ajax({
+			method: "POST",
+			url: "../ajax/ajaxedit.php",
+			data : data,
+			success: function(success){
+				if (success == "<span id='success'>Changement effectué</span>"){
+					$("#globalerror").html(success)
+					window.location.replace("../ressources/partnerequips.php").delay(2000)
+				} else {
+					$("#globalerror").html(success)
+				}
+			}
+		})
+	})
 })
