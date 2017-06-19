@@ -24,7 +24,7 @@
 					}
 				?>
 			</select><br/>
-			<div class="label">Image : </div><input type="file" id="pcardpic" name="pcardpic"><br/>
+			<div class="label">Nom de l'image : </div><input type="text" id="pcardpic" name="pcardpic"><br/>
 			<div class="label">Type : </div>
 			<select name="pcardtype" form="pcards" id="pcardtype">
 				<option value="Corps à corps">Corps à corps</option>
@@ -38,7 +38,7 @@
 		<table id="pcardtable">
 			<thead>
 				<tr>
-					<td>ID</td>
+					<td>Actions</td>
 					<td>Personnage</td>
 					<td>Img name</td>
 					<td>Type</td>
@@ -52,7 +52,7 @@
 					foreach ($pcards as $row){
 						echo "
 							<tr>
-								<td>" . $row->ID ."</td>
+								<td><a href='pcards' class='edit' name='" . $row->ID . "'><img src='../img/pen.png' alt='Editer'></a><a href='pcards' class='delete' name='" . $row->ID . "'><img src='../img/bin.png' alt='Supprimer'></a></td>
 								<td>" . $row->pseudo ."</td>
 								<td>" . $row->image_url ."</td>
 								<td>" . $row->pcardtype ."</td>
