@@ -129,4 +129,20 @@
 			echo "<span id='error'>Une erreur est survenue dans la suppression de la carte pour partenaire</span>";
 		}
 	}
+	
+	if ($_POST["table"] == "partners"){
+		$pequipdelete = $PDO->prepare("DELETE FROM partnerequipments WHERE partner_id=:id");
+		$pequipdelete->bindValue(':id', $_POST["id"]);
+		if ($pequipdelete->execute()){
+			$partdelete = $PDO->prepare("DELETE FROM partners WHERE ID=:id");
+			$partdelete->bindValue(':id', $_POST["id"]);
+			if ($partdelete->execute()){
+				echo "<span id='success'>Le partenaire a bien été supprimé</span>";
+			} else {
+				echo "<span id='error'>Une erreur est survenue dans la suppression du partenaire</span>";
+			}
+		} else {
+			echo "<span id='error'>Une erreur est survenue dans la suppression de l'équipement du partenaire</span>";
+		}
+	}
 ?>
