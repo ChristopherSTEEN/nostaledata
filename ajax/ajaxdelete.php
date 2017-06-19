@@ -99,4 +99,14 @@
 			echo "<span id='error'>Une erreur est survenue dans la suppression de la fée</span>";
 		}
 	}
+	
+	if ($_POST["table"] == "jewelries"){
+		$jeweldelete = $PDO->prepare("DELETE FROM jewelries WHERE ID = :id");
+		$jeweldelete->bindValue(':id', $_POST["id"]);
+		if ($jeweldelete->execute()){
+			echo "<span id='success'>Le bijoux a bien été supprimé</span>";
+		} else {
+			echo "<span id='error'>Une erreur est survenue dans la suppression du bijoux</span>";
+		}
+	}
 ?>
