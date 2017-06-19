@@ -76,7 +76,7 @@
 		if ($carddelete->execute()){
 			echo "<span id='success'>La carte SP a bien été supprimée</span>";
 		} else {
-			echo "<span id='error'>Une erreur est survenue dans la suppression du personnage</span>";
+			echo "<span id='error'>Une erreur est survenue dans la suppression de la carte SP/span>";
 		}
 	}
 	
@@ -86,7 +86,17 @@
 		if ($equipdelete->execute()){
 			echo "<span id='success'>L'équipement a bien été supprimé</span>";
 		} else {
-			echo "<span id='error'>Une erreur est survenue dans la suppression du personnage</span>";
+			echo "<span id='error'>Une erreur est survenue dans la suppression de l'équipement</span>";
+		}
+	}
+	
+	if ($_POST["table"] == "fairies"){
+		$fairiedelete = $PDO->prepare("DELETE FROM fairies WHERE ID = :id");
+		$fairiedelete->bindValue(':id', $_POST["id"]);
+		if ($fairiedelete->execute()){
+			echo "<span id='success'>La fée a bien été supprimé</span>";
+		} else {
+			echo "<span id='error'>Une erreur est survenue dans la suppression de la fée</span>";
 		}
 	}
 ?>
