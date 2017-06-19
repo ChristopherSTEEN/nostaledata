@@ -117,7 +117,7 @@
 		</form>
 		<?php }}} ?>
 		<?php 
-			if ($_SESSSION["table"] == "fairies"){
+			if ($_SESSION["table"] == "fairies"){
 				$fairieedit = $PDO->query("SELECT * FROM fairies ORDER BY ID");
 				foreach ($fairieedit as $row){
 					if ($row->ID == $_SESSION["id"]){
@@ -143,7 +143,7 @@
 		</form>
 		<?php }}} ?>
 		<?php
-			if ($_SESSSION["table"] == "jewelries"){
+			if ($_SESSION["table"] == "jewelries"){
 				$jeweledit = $PDO->query("SELECT * FROM jewelries ORDER BY ID");
 				foreach ($jeweledit as $row){
 					if ($row->ID == $_SESSION["id"]){
@@ -163,6 +163,30 @@
 			<div class="label">Nom : </div><input type="text" id="jewelname" name="jewelname" value="<?php $row->name; ?>" disabled><br/>
 			<div class="label">Niveau : </div><input type="number" step="1" min="1" max="99" id="jewellv" name="jewellv" value="<?php $row->level; ?>" disabled><br/>
 			<center><input type="submit" value="Editer le bijoux" name="submit" id="jewelsubmit">
+			<input type="submit" value="Annuler les changements" name="submit" id="cancel"></center>
+		</form>
+		<?php }}} ?>
+		<?php
+			if ($_SESSION["table"] == "pcards"){
+				$pcardedit = $PDO->query("SELECT * FROM partnercards ORDER BY ID");
+				foreach ($pcardedit as $row){
+					if ($row->ID == $_SESSION["id"]){
+		?>
+		<form action="./partnercards.php" method="POST" id="pcards">
+			<div class="label">Personnage : </div>
+			<select name="charapcards" form="pcards" id="charapcards">
+				<?php
+					$charapcards = $PDO->query("SELECT * FROM characters ORDER BY ID");
+					foreach ($charapcards as $charow){
+						echo "<option value='" . $charow->ID . "'>" . $charow->pseudo . "</option>";
+					}
+				?>
+			</select><br/>
+			<div class="label">Nom de l'image : </div><input type="text" id="pcardpic" name="pcardpic" value="<?php $row->image_url; ?>"><br/>
+			<div class="label">Type : </div><input type="text" id="pcardtype" name="pcardtype" value="<?php $row->pcardtype; ?>" disabled><br/>
+			<div class="label">Nom : </div><input type="text" id="pcardname" name="pcardname" value="<?php $row->name; ?>" disabled><br/>
+			<div class="label">Rang des skills : </div><input type="text" id="skillrk" name="skillrk" placeholder="X-X-X" value="<?php $row->skillsrank; ?>"><br/>
+			<center><input type="submit" value="Editer la carte pour partenaire" name="submit" id="pcardsubmit">
 			<input type="submit" value="Annuler les changements" name="submit" id="cancel"></center>
 		</form>
 		<?php }}} ?>
