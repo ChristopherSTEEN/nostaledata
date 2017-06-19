@@ -24,7 +24,7 @@
 					}
 				?>
 			</select><br/>
-			<div class="label">Image : </div><input type="file" id="petpic" name="petpic"><br/>
+			<div class="label">Nom de l'image : </div><input type="text" id="petpic" name="petpic"><br/>
 			<div class="label">Nom : </div><input type="text" id="petname" name="petname"><br/>
 			<div class="label">Niveau : </div><input type="number" step="1" min="1" max="99" id="petlv" name="petlv"><br/>
 			<div class="label">Niveau d'attaque : </div><input type="number" step="1" min="0" max="10" id="attlv" name="attlv"><br/>
@@ -34,7 +34,7 @@
 		<table id="pettable">
 			<thead>
 				<tr>
-					<td>ID</td>
+					<td>Actions</td>
 					<td>Personnage</td>
 					<td>Img name</td>
 					<td>Nom</td>
@@ -49,7 +49,7 @@
 					foreach ($pets as $row){
 						echo "
 							<tr>
-								<td>" . $row->ID ."</td>
+								<td><a href='pets' class='edit' name='" . $row->ID . "'><img src='../img/pen.png' alt='Editer'></a><a href='pets' class='delete' name='" . $row->ID . "'><img src='../img/bin.png' alt='Supprimer'></a></td>
 								<td>" . $row->pseudo ."</td>
 								<td>" . $row->image_url ."</td>
 								<td>" . $row->name ."</td>
