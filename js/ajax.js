@@ -400,4 +400,26 @@ $(function(){
 			}
 		})
 	})
+	
+	$("#jewelsubmit").click(function(s){
+		s.preventDefault()
+		data = {
+			chara: $("#charajewel").val(),
+			img: $("#jewelpic").val(),
+			action: "jeweledit"
+		}
+		$.ajax({
+			method: "POST",
+			url: "../ajax/ajaxedit.php",
+			data : data,
+			success: function(success){
+				if (success == "<span id='success'>Changement effectué</span>"){
+					$("#globalerror").html(success)
+					window.location.replace("../ressources/jewelries.php").delay(2000)
+				} else {
+					$("#globalerror").html(success)
+				}
+			}
+		})
+	})
 })
