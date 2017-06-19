@@ -35,7 +35,7 @@
 		<table id="fairietable">
 			<thead>
 				<tr>
-					<td><a href='fairies' class='edit' name='" . $row->ID . "'><img src='../img/pen.png' alt='Editer'></a><a href='fairies' class='delete' name='" . $row->ID . "'><img src='../img/bin.png' alt='Supprimer'></a></td>
+					<td>Actions</td>
 					<td>Personnage</td>
 					<td>Img name</td>
 					<td>Nom</td>
@@ -51,7 +51,7 @@
 					foreach ($equipements as $row){
 						echo "
 							<tr>
-								<td>" . $row->ID ."</td>
+								<td><a href='fairies' class='edit' name='" . $row->ID . "'><img src='../img/pen.png' alt='Editer'></a><a href='fairies' class='delete' name='" . $row->ID . "'><img src='../img/bin.png' alt='Supprimer'></a></td>
 								<td>" . $row->pseudo ."</td>
 								<td>" . $row->image_url ."</td>
 								<td>" . $row->name ."</td>
