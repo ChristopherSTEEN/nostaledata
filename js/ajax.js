@@ -468,4 +468,27 @@ $(function(){
 			}
 		})
 	})
+	
+	$("#partsubmit").click(function(s){
+		s.preventDefault()
+		data = {
+			chara: $("#charapartners").val(),
+			img: $("#partnerpic").val(),
+			level: $("#partlv").val(),
+			action: "partedit"
+		}
+		$.ajax({
+			method: "POST",
+			url: "../ajax/ajaxedit.php",
+			data : data,
+			success: function(success){
+				if (success == "<span id='success'>Changement effectué</span>"){
+					$("#globalerror").html(success)
+					window.location.replace("../ressources/partners.php").delay(2000)
+				} else {
+					$("#globalerror").html(success)
+				}
+			}
+		})
+	})
 })
