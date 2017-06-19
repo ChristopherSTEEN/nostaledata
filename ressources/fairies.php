@@ -24,7 +24,7 @@
 					}
 				?>
 			</select><br/>
-			<div class="label">Image : </div><input type="file" id="fairiepic" name="fairiepic"><br/>
+			<div class="label">Nom de l'image : </div><input type="text" id="fairiepic" name="fairiepic"><br/>
 			<div class="label">Nom : </div><input type="text" id="fairiename" name="fairiename"><br/>
 			<div class="label">Elément Feu : </div><input type="number" step="1" min="0" id="fireelem" name="fireelem"><br/>
 			<div class="label">Elément Eau : </div><input type="number" step="1" min="0" id="waterelem" name="waterelem"><br/>
