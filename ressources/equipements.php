@@ -25,7 +25,7 @@
 					}
 				?>
 			</select><br/>
-			<div class="label">Image : </div><input type="text" id="equippic" name="equippic"><br/>
+			<div class="label">Nom de l'image : </div><input type="text" id="equippic" name="equippic"><br/>
 			<div class="label">Type : </div>
 			<select name="equiptype" form="equipements" id="equiptype">
 				<option value="Arme principale">Arme principale</option>
