@@ -223,5 +223,29 @@
 			<input type="submit" value="Annuler les changements" name="submit" id="cancel"></center>
 		</form>
 		<?php }}} ?>
+		<?php
+			if ($_SESSION["table"] == "partners"){
+				$pequipedit = $PDO->query("SELECT * FROM partners ORDER BY ID");
+				foreach ($pequipedit as $row){
+					if ($row->ID == $_SESSION["id"]){
+		?>
+		<form action="./partners.php" method="POST" id="partners">
+			<div class="label">Personnage : </div>
+			<select name="charapartners" form="partners" id="charapartners">
+				<?php
+					$charapartners = $PDO->query("SELECT * FROM characters ORDER BY ID");
+					foreach ($charapartners as $charow){
+						echo "<option value='" . $charow->ID . "'>" . $charow->pseudo . "</option>";
+					}
+				?>
+			</select><br/>
+			<div class="label">Nom de l'image : </div><input type="text" id="partnerpic" name="partnerpic" value="<?php echo $row->image_url; ?>"><br/>
+			<div class="label">Type : </div><input type="text" id="parttype" name="parttype" value="<?php echo $row->parttype; ?>" disabled><br/>
+			<div class="label">Nom : </div><input type="text" id="partname" name="partname" value="<?php echo $row->name; ?>" disabled><br/>
+			<div class="label">Niveau : </div><input type="number" step="1" min="1" max="99" id="partlv" name="partlv" value="<?php echo $row->level; ?>"><br/>
+			<center><input type="submit" value="Editer le partenaire" name="submit" id="partsubmit">
+			<input type="submit" value="Annuler les changements" name="submit" id="cancel"></center>
+		</form>
+		<?php }}} ?>
 	</body>
 </html>
