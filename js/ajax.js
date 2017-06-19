@@ -422,4 +422,27 @@ $(function(){
 			}
 		})
 	})
+	
+	$("#pcardsubmit").click(function(s){
+		s.preventDefault()
+		data = {
+			chara: $("#charapcards").val(),
+			img: $("#pcardpic").val(),
+			skillrk: $("#skillrk").val(),
+			action: "pcardedit"
+		}
+		$.ajax({
+			method: "POST",
+			url: "../ajax/ajaxedit.php",
+			data : data,
+			success: function(success){
+				if (success == "<span id='success'>Changement effectué</span>"){
+					$("#globalerror").html(success)
+					window.location.replace("../ressources/partnercards.php").delay(2000)
+				} else {
+					$("#globalerror").html(success)
+				}
+			}
+		})
+	})
 })
