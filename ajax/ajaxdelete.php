@@ -109,4 +109,14 @@
 			echo "<span id='error'>Une erreur est survenue dans la suppression du bijoux</span>";
 		}
 	}
+	
+	if ($_POST["table"] == "pcards"){
+		$pcarddelete = $PDO->prepare("DELETE FROM partnercards WHERE ID = :id");
+		$pcarddelete->bindValue(':id', $_POST["id"]);
+		if ($pcarddelete->execute()){
+			echo "<span id='success'>La carte pour partenaire a bien été supprimée</span>";
+		} else {
+			echo "<span id='error'>Une erreur est survenue dans la suppression de la carte pour partenaire</span>";
+		}
+	}
 ?>
