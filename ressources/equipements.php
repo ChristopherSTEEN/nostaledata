@@ -57,7 +57,7 @@
 		<table id="equiptable">
 			<thead>
 				<tr>
-					<td>ID</td>
+					<td>Actions</td>
 					<td>Personnage</td>
 					<td>Img name</td>
 					<td>Type</td>
