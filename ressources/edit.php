@@ -93,7 +93,7 @@
 					}
 				?>
 			</select><br/>
-			<div class="label">Image : </div><input type="text" id="equippic" name="equippic" value="<?php echo $row->image_url; ?>"><br/>
+			<div class="label">Nom de l'image : </div><input type="text" id="equippic" name="equippic" value="<?php echo $row->image_url; ?>"><br/>
 			<div class="label">Type : </div><input type="text" id="equiptype" name="equiptype" value="<?php echo $row->equiptype; ?>" disabled><br/>
 			<div class="label">Nom : </div><input type="text" id="equipname" name="equipname" value="<?php echo $row->name; ?>" disabled><br/>
 			<div class="label">Niveau : </div><input type="number" step="1" min="1" max="99" id="equiplv" name="equiplv" value="<?php echo $row->level ?>"><br/>
@@ -132,13 +132,37 @@
 					}
 				?>
 			</select><br/>
-			<div class="label">Image : </div><input type="text" id="fairiepic" name="fairiepic" value="<?php $row->image_url; ?>"><br/>
+			<div class="label">Nom de l'image : </div><input type="text" id="fairiepic" name="fairiepic" value="<?php $row->image_url; ?>"><br/>
 			<div class="label">Nom : </div><input type="text" id="fairiename" name="fairiename" value="<?php $row->name; ?>" disabled><br/>
 			<div class="label">Elément Feu : </div><input type="number" step="1" min="0" id="fireelem" name="fireelem" value="<?php $row->fireelem; ?>"><br/>
 			<div class="label">Elément Eau : </div><input type="number" step="1" min="0" id="waterelem" name="waterelem" value="<?php $row->waterelem; ?>"><br/>
 			<div class="label">Elément Lumière : </div><input type="number" step="1" min="0" id="lightelem" name="lightelem" value="<?php $row->lightelem; ?>"><br/>
 			<div class="label">Elément Obscure : </div><input type="number" step="1" min="0" id="darkelem" name="darkelem" value="<?php $row->darkelem; ?>"><br/>
 			<center><input type="submit" value="Editer la fée" name="submit" id="fairiesubmit">
+			<input type="submit" value="Annuler les changements" name="submit" id="cancel"></center>
+		</form>
+		<?php }}} ?>
+		<?php
+			if ($_SESSSION["table"] == "jewelries"){
+				$jeweledit = $PDO->query("SELECT * FROM jewelries ORDER BY ID");
+				foreach ($jeweledit as $row){
+					if ($row->ID == $_SESSION["id"]){
+		?>
+		<form action="./jewelries.php" method="POST" id="jewelries">
+			<div class="label">Personnage : </div>
+			<select name="charajewel" form="jewelries" id="charajewel">
+				<?php
+					$charajewels = $PDO->query("SELECT * FROM characters ORDER BY ID");
+					foreach ($charajewels as $jewrow){
+						echo "<option value='" . $jewrow->ID . "'>" . $jewrow->pseudo . "</option>";
+					}
+				?>
+			</select><br/>
+			<div class="label">Nom de l'image : </div><input type="text" id="jewelpic" name="jewelpic" value="<?php $row->image_url; ?>"><br/>
+			<div class="label">Type : </div><input type="text" id="jeweltype" name="jeweltype" value="<?php $row->jeweltype; ?>" disabled><br/>
+			<div class="label">Nom : </div><input type="text" id="jewelname" name="jewelname" value="<?php $row->name; ?>" disabled><br/>
+			<div class="label">Niveau : </div><input type="number" step="1" min="1" max="99" id="jewellv" name="jewellv" value="<?php $row->level; ?>" disabled><br/>
+			<center><input type="submit" value="Editer le bijoux" name="submit" id="jewelsubmit">
 			<input type="submit" value="Annuler les changements" name="submit" id="cancel"></center>
 		</form>
 		<?php }}} ?>
