@@ -122,4 +122,20 @@
 			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
 		}
 	}
+	
+	if ($_POST["action"] == "jeweledit"){
+		if ($_POST["chara"] != ""){
+			$jewelupdate = $PDO->prepare("UPDATE jewelries SET character_id=:chara, image_url=:img");
+			$jewelupdate->bindValue(':chara', $_POST["chara"]);
+			$jewelupdate->bindValue(':img', $_POST["img"]);
+			if($jewelupdate->execute()){
+				session_destroy();
+				echo "<span id='success'>Changement effectué</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}
+		} else {
+			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
+		}
+	}
 ?>
