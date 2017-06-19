@@ -49,7 +49,7 @@
 		<table id="pequiptable">
 			<thead>
 				<tr>
-					<td>ID</td>
+					<td>Actions</td>
 					<td>Partenaire</td>
 					<td>Type</td>
 					<td>Niveau</td>
@@ -63,7 +63,7 @@
 					foreach ($pequips as $row){
 						echo "
 							<tr>
-								<td>" . $row->ID ."</td>
+								<td><a href='pequips' class='edit' name='" . $row->ID . "'><img src='../img/pen.png' alt='Editer'></a><a href='pequips' class='delete' name='" . $row->ID . "'><img src='../img/bin.png' alt='Supprimer'></a></td>
 								<td>" . $row->partname ."</td>
 								<td>" . $row->pequiptype ."</td>
 								<td>" . $row->level ."</td>
