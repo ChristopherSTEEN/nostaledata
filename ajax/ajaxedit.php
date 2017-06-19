@@ -178,4 +178,22 @@
 			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
 		}	
 	}
+	
+	if ($_POST["action"] == "partedit"){
+		if ($_POST["chara"] != "" && $_POST["level"] != ""){
+			$partupdate = $PDO->prepare("UPDATE partners SET character_id=:chara, image_url=:img, level=:level WHERE ID=:id");
+			$partupdate->bindValue(':chara', $_POST["chara"]);
+			$partupdate->bindValue(':img', $_POST["img"]);
+			$partupdate->bindValue(':level', $_POST["level"]);
+			$partupdate->bindValue(':id', $_SESSION["id"]);
+			if($partupdate->execute()){
+				session_destroy();
+				echo "<span id='success'>Changement effectué</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}
+		} else {
+			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
+		}
+	}
 ?>
