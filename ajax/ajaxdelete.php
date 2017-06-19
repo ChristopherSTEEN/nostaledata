@@ -94,7 +94,7 @@
 		$fairiedelete = $PDO->prepare("DELETE FROM fairies WHERE ID = :id");
 		$fairiedelete->bindValue(':id', $_POST["id"]);
 		if ($fairiedelete->execute()){
-			echo "<span id='success'>La fée a bien été supprimé</span>";
+			echo "<span id='success'>La fée a bien été supprimée</span>";
 		} else {
 			echo "<span id='error'>Une erreur est survenue dans la suppression de la fée</span>";
 		}
@@ -104,7 +104,7 @@
 		$jeweldelete = $PDO->prepare("DELETE FROM jewelries WHERE ID = :id");
 		$jeweldelete->bindValue(':id', $_POST["id"]);
 		if ($jeweldelete->execute()){
-			echo "<span id='success'>Le bijoux a bien été supprimé</span>";
+			echo "<span id='success'>Le bijou a bien été supprimé</span>";
 		} else {
 			echo "<span id='error'>Une erreur est survenue dans la suppression du bijoux</span>";
 		}
@@ -115,6 +115,16 @@
 		$pcarddelete->bindValue(':id', $_POST["id"]);
 		if ($pcarddelete->execute()){
 			echo "<span id='success'>La carte pour partenaire a bien été supprimée</span>";
+		} else {
+			echo "<span id='error'>Une erreur est survenue dans la suppression de la carte pour partenaire</span>";
+		}
+	}
+	
+	if ($_POST["table"] == "pequips"){
+		$pequipdelete = $PDO->prepare("DELETE FROM partnerequipments WHERE ID = :id");
+		$pequipdelete->bindValue(':id', $_POST["id"]);
+		if ($pequipdelete->execute()){
+			echo "<span id='success'>L'équipement pour partenaire a bien été supprimé</span>";
 		} else {
 			echo "<span id='error'>Une erreur est survenue dans la suppression de la carte pour partenaire</span>";
 		}
