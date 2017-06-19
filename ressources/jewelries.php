@@ -24,7 +24,7 @@
 					}
 				?>
 			</select><br/>
-			<div class="label">Image : </div><input type="file" id="jewelpic" name="jewelpic"><br/>
+			<div class="label">Nom de l'image : </div><input type="text" id="jewelpic" name="jewelpic"><br/>
 			<div class="label">Type : </div>
 			<select name="jeweltype" form="jewelries" id="jeweltype">
 				<option value="Bague">Bague</option>
