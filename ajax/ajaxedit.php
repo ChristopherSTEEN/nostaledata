@@ -68,12 +68,13 @@
 	
 	if ($_POST["action"] == "cardedit"){
 		if ($_POST["chara"] != "" && $_POST["level"] != "" && $_POST["upgrade"] != "" && $_POST["reinf"] != ""){
-			$cardupdate = $PDO->prepare("UPDATE cards SET character_id=:chara, image_url=:img, level=:level, upgrade=:upgrade, reinforcement=:reinf");
+			$cardupdate = $PDO->prepare("UPDATE cards SET character_id=:chara, image_url=:img, level=:level, upgrade=:upgrade, reinforcement=:reinf WHERE ID=:id");
 			$cardupdate->bindValue(':chara', $_POST["chara"]);
 			$cardupdate->bindValue(':img', $_POST["img"]);
 			$cardupdate->bindValue(':level', $_POST["level"]);
 			$cardupdate->bindValue(':upgrade', $_POST["upgrade"]);
 			$cardupdate->bindValue(':reinf', $_POST["reinf"]);
+			$cardupdate->bindValue(':id', $_SESSION["id"]);
 			if($cardupdate->execute()){
 				session_destroy();
 				echo "<span id='success'>Changement effectué</span>";
@@ -87,11 +88,12 @@
 	
 	if ($_POST["action"] == "equipedit"){
 		if ($_POST["chara"] != "" && $_POST["rare"] != "" && $_POST["upgrade"] != ""){
-			$equipupdate = $PDO->prepare("UPDATE equipments SET character_id=:chara, image_url=:img, rare=:rare, upgrade=:up");
+			$equipupdate = $PDO->prepare("UPDATE equipments SET character_id=:chara, image_url=:img, rare=:rare, upgrade=:up WHERE ID=:id");
 			$equipupdate->bindValue(':chara', $_POST["chara"]);
 			$equipupdate->bindValue(':img', $_POST["img"]);
 			$equipupdate->bindValue(':rare', $_POST["rare"]);
 			$equipupdate->bindValue(':up', $_POST["upgrade"]);
+			$equipupdate->bindValue(':id', $_SESSION["id"]);
 			if($cardupdate->execute()){
 				session_destroy();
 				echo "<span id='success'>Changement effectué</span>";
@@ -105,13 +107,14 @@
 	
 	if ($_POST["action"] == "fairieedit"){
 		if ($_POST["chara"] != "" && $_POST["fire"] != "" && $_POST["water"] != "" && $_POST["light"] != "" && $_POST["dark"] != ""){
-			$fairieupdate = $PDO->prepare("UPDATE fairies SET character_id=:chara, image_url=:img, fireelem=:fire, waterelem=:water, lightelem=:light, darkelem=:dark");
+			$fairieupdate = $PDO->prepare("UPDATE fairies SET character_id=:chara, image_url=:img, fireelem=:fire, waterelem=:water, lightelem=:light, darkelem=:dark WHERE ID=:id");
 			$fairieupdate->bindValue(':chara', $_POST["chara"]);
 			$fairieupdate->bindValue(':img', $_POST["img"]);
 			$fairieupdate->bindValue(':fire', $_POST["fire"]);
 			$fairieupdate->bindValue(':water', $_POST["water"]);
 			$fairieupdate->bindValue(':light', $_POST["light"]);
 			$fairieupdate->bindValue(':dark', $_POST["dark"]);
+			$fairieupdate->bindValue(':id', $_SESSION["id"]);
 			if($fairieupdate->execute()){
 				session_destroy();
 				echo "<span id='success'>Changement effectué</span>";
@@ -125,15 +128,28 @@
 	
 	if ($_POST["action"] == "jeweledit"){
 		if ($_POST["chara"] != ""){
-			$jewelupdate = $PDO->prepare("UPDATE jewelries SET character_id=:chara, image_url=:img");
+			$jewelupdate = $PDO->prepare("UPDATE jewelries SET character_id=:chara, image_url=:img WHERE ID=:id");
 			$jewelupdate->bindValue(':chara', $_POST["chara"]);
 			$jewelupdate->bindValue(':img', $_POST["img"]);
+			$jewelupdate->bindValue(':id', $_SESSION["id"]);
 			if($jewelupdate->execute()){
 				session_destroy();
 				echo "<span id='success'>Changement effectué</span>";
 			} else {
 				echo "<span id='error'>Erreur dans l'enregistrement</span>";
 			}
+		} else {
+			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
+		}
+	}
+	
+	if ($_POST["action"] == "pcardedit"){
+		if ($_POST["chara"] != "" && $_POST["skillrk"] != ""){
+			$pcardupdate = $PDO->prepare("UPDATE partnercards SET character_id=:chara, image_url=:img, skillsrank=:skillrk WHERE ID=:id");
+			$pcardupdate->bindValue(':chara', $_POST["chara"]);
+			$pcardupdate->bindValue(':img', $_POST["img"]);
+			$pcardupdate->bindValue(':skillrk', $_POST["skillrk"]);
+			$pcardupdate->bindValue(':id', $_SESSION["id"]);
 		} else {
 			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
 		}
