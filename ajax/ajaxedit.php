@@ -150,8 +150,32 @@
 			$pcardupdate->bindValue(':img', $_POST["img"]);
 			$pcardupdate->bindValue(':skillrk', $_POST["skillrk"]);
 			$pcardupdate->bindValue(':id', $_SESSION["id"]);
+			if($pcardupdate->execute()){
+				session_destroy();
+				echo "<span id='success'>Changement effectué</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}
 		} else {
 			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
 		}
+	}
+	
+	if ($_POST["action"] == "pequipedit"){
+		if ($_POST["level"] != "" && $_POST["upgrade"] != ""){
+			$pequipupdate = $PDO->prepare("UPDATE partnerequipments SET level=:level, rare=:rare, upgrade=:upgrade WHERE ID=:id");
+			$pequipupdate->bindValue(':level', $_POST["level"]);
+			$pequipupdate->bindValue(':rare', $_POST["rare"]);
+			$pequipupdate->bindValue(':upgrade', $_POST["upgrade"]);
+			$pequipupdate->bindValue(':id', $_SESSION["id"]);
+			if($pequipupdate->execute()){
+				session_destroy();
+				echo "<span id='success'>Changement effectué</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}
+		} else {
+			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
+		}	
 	}
 ?>
