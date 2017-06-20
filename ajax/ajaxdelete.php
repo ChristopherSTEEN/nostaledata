@@ -145,4 +145,14 @@
 			echo "<span id='error'>Une erreur est survenue dans la suppression de l'équipement du partenaire</span>";
 		}
 	}
+	
+	if ($_POST["table"] == "pets"){
+		$petdelete = $PDO->prepare("DELETE FROM pets WHERE ID = :id");
+		$petdelete->bindValue(':id', $_POST["id"]);
+		if ($petdelete->execute()){
+			echo "<span id='success'>Le nosmate a bien été supprimé</span>";
+		} else {
+			echo "<span id='error'>Une erreur est survenue dans la suppression du nosmate</span>";
+		}
+	}
 ?>
