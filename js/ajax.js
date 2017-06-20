@@ -491,4 +491,30 @@ $(function(){
 			}
 		})
 	})
+	
+	$("#petsubmit").click(function(s){
+		s.preventDefault()
+		data = {
+			chara: $("#charapets").val(),
+			img: $("#petpic").val(),
+			name: $("#petname").val(),
+			level: $("#petlv").val(),
+			atqlv: $("#attlv").val(),
+			deflv: $("#deflv").val(),
+			action: "petedit"
+		}
+		$.ajax({
+			method: "POST",
+			url: "../ajax/ajaxedit.php",
+			data : data,
+			success: function(success){
+				if (success == "<span id='success'>Changement effectué</span>"){
+					$("#globalerror").html(success)
+					window.location.replace("../ressources/pets.php").delay(2000)
+				} else {
+					$("#globalerror").html(success)
+				}
+			}
+		})
+	})
 })
