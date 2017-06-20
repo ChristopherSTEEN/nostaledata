@@ -248,7 +248,7 @@
 		</form>
 		<?php }}} ?>
 		<?php
-			if ($_SESSION["table"] == "partners"){
+			if ($_SESSION["table"] == "pets"){
 				$petedit = $PDO->query("SELECT * FROM pets ORDER BY ID");
 				foreach ($petedit as $row){
 					if ($row->ID == $_SESSION["id"]){
