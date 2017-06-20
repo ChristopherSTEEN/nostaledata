@@ -263,12 +263,40 @@
 					}
 				?>
 			</select><br/>
-			<div class="label">Nom de l'image : </div><input type="text" id="petpic" name="petpic" value="<?php echo $row->image_url ?>"><br/>
-			<div class="label">Nom : </div><input type="text" id="petname" name="petname" value="<?php echo $row->name ?>"><br/>
-			<div class="label">Niveau : </div><input type="number" step="1" min="1" max="99" id="petlv" name="petlv" value="<?php echo $row->level ?>"><br/>
-			<div class="label">Niveau d'attaque : </div><input type="number" step="1" min="0" max="10" id="attlv" name="attlv" value="<?php echo $row->atqlv ?>"><br/>
-			<div class="label">Niveau de défense : </div><input type="number" step="1" min="0" max="10" id="deflv" name="deflv" value="<?php echo $row->deflv ?>"><br/>
+			<div class="label">Nom de l'image : </div><input type="text" id="petpic" name="petpic" value="<?php echo $row->image_url; ?>"><br/>
+			<div class="label">Nom : </div><input type="text" id="petname" name="petname" value="<?php echo $row->name; ?>"><br/>
+			<div class="label">Niveau : </div><input type="number" step="1" min="1" max="99" id="petlv" name="petlv" value="<?php echo $row->level; ?>"><br/>
+			<div class="label">Niveau d'attaque : </div><input type="number" step="1" min="0" max="10" id="attlv" name="attlv" value="<?php echo $row->atqlv; ?>"><br/>
+			<div class="label">Niveau de défense : </div><input type="number" step="1" min="0" max="10" id="deflv" name="deflv" value="<?php echo $row->deflv; ?>"><br/>
 			<center><input type="submit" value="Editer le nosmate" name="submit" id="petsubmit">
+			<input type="submit" value="Annuler les changements" name="submit" id="cancel"></center>
+		</form>
+		<?php }}} ?>
+		<?php
+			if ($_SESSION["table"] == "resists"){
+				$resedit = $PDO->query("SELECT * FROM resists ORDER BY ID");
+				foreach ($resedit as $row){
+					if ($row->ID == $_SESSION["id"]){
+		?>
+		<form action="./resists.php" method="POST" id="resists">
+			<div class="label">Personnage : </div>
+			<select name="charares" form="resists" id="charares">
+				<?php
+					$chararesists = $PDO->query("SELECT * FROM characters ORDER BY ID");
+					foreach ($chararesists as $charow){
+						echo "<option value='" . $charow->ID . "'>" . $charow->pseudo . "</option>";
+					}
+				?>
+			</select><br/>
+			<div class="label">Nom de l'image : </div><input type="file" id="resistpic" name="resistpic" value="<?php echo $row->image_url; ?>"><br/>
+			<div class="label">Type : </div><input type="text" id="restype" name="restype" value="<?php echo $row->restype; ?>" disabled><br/>
+			<div class="label">Nom : </div><input type="text" id="resistname" name="resistname" value="<?php echo $row->name; ?>" disabled><br/>
+			<div class="label">Niveau : </div><input type="number" step="1" min="1" max="99" id="resistlv" name="resistlv" value="<?php echo $row->level; ?>" disabled><br/>
+			<div class="label">Résistance Feu : </div><input type="number" step="1" min="0" id="fireres" name="fireres" value="<?php echo $row->fireres; ?>"><br/>
+			<div class="label">Resistance Eau : </div><input type="number" step="1" min="0" id="waterres" name="waterres" value="<?php echo $row->waterres; ?>"><br/>
+			<div class="label">Resistance Lumière : </div><input type="number" step="1" min="0" id="lightres" name="lightres" value="<?php echo $row->lightres; ?>"><br/>
+			<div class="label">Resistance Obscure : </div><input type="number" step="1" min="0" id="darkres" name="darkres" value="<?php echo $row->darkres; ?>"><br/>
+			<center><input type="submit" value="Editer la résistance" name="submit" id="ressubmit">
 			<input type="submit" value="Annuler les changements" name="submit" id="cancel"></center>
 		</form>
 		<?php }}} ?>
