@@ -24,7 +24,7 @@
 					}
 				?>
 			</select><br/>
-			<div class="label">Image : </div><input type="file" id="resistpic" name="resistpic"><br/>
+			<div class="label">Nom de l'image : </div><input type="file" id="resistpic" name="resistpic"><br/>
 			<div class="label">Type : </div>
 			<select name="resisttype" form="resists" id="resisttype">
 				<option value="Gants">Gants</option>
@@ -43,7 +43,7 @@
 		<table id="resisttable">
 			<thead>
 				<tr>
-					<td>ID</td>
+					<td>Actions</td>
 					<td>Personnage</td>
 					<td>Img name</td>
 					<td>Type</td>
@@ -61,7 +61,7 @@
 					foreach ($equipements as $row){
 						echo "
 							<tr>
-								<td>" . $row->ID ."</td>
+								<td><a href='resists' class='edit' name='" . $row->ID . "'><img src='../img/pen.png' alt='Editer'></a><a href='resists' class='delete' name='" . $row->ID . "'><img src='../img/bin.png' alt='Supprimer'></a></td>
 								<td>" . $row->pseudo ."</td>
 								<td>" . $row->image_url ."</td>
 								<td>" . $row->restype ."</td>
