@@ -196,4 +196,25 @@
 			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
 		}
 	}
+	
+	if ($_POST["action"] == "petedit"){
+		if ($_POST["chara"] != "" && $_POST["name"] != "" && $_POST["level"] != "" && $_POST["atqlv"] != "" && $_POST["deflv"] != ""){
+			$petupdate = $PDO->prepare("UPDATE pets SET character_id=:chara, image_url=:img, name=:name, level=:level, atqlv=:atq, deflv=:def WHERE ID=:id");
+			$petupdate->bindValue(':chara', $_POST["chara"]);
+			$petupdate->bindValue(':img', $_POST["img"]);
+			$petupdate->bindValue(':name', $_POST["name"]);
+			$petupdate->bindValue(':level', $_POST["level"]);
+			$petupdate->bindValue(':atq', $_POST["atqlv"]);
+			$petupdate->bindValue(':def', $_POST["deflv"]);
+			$petupdate->bindValue(':id', $_SESSION["id"]);
+			if($petupdate->execute()){
+				session_destroy();
+				echo "<span id='success'>Changement effectué</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}
+		} else {
+			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
+		}
+	}
 ?>
