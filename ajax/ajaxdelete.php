@@ -155,4 +155,14 @@
 			echo "<span id='error'>Une erreur est survenue dans la suppression du nosmate</span>";
 		}
 	}
+	
+	if ($_POST["table"] == "resists"){
+		$resistdelete = $PDO->prepare("DELETE FROM resists WHERE ID = :id");
+		$resistdelete->bindValue(':id', $_POST["id"]);
+		if ($resistdelete->execute()){
+			echo "<span id='success'>La résistance a bien été supprimée</span>";
+		} else {
+			echo "<span id='error'>Une erreur est survenue dans la suppression de la résistance</span>";
+		}
+	}
 ?>
