@@ -225,8 +225,8 @@
 		<?php }}} ?>
 		<?php
 			if ($_SESSION["table"] == "partners"){
-				$pequipedit = $PDO->query("SELECT * FROM partners ORDER BY ID");
-				foreach ($pequipedit as $row){
+				$partedit = $PDO->query("SELECT * FROM partners ORDER BY ID");
+				foreach ($partedit as $row){
 					if ($row->ID == $_SESSION["id"]){
 		?>
 		<form action="./partners.php" method="POST" id="partners">
@@ -244,6 +244,31 @@
 			<div class="label">Nom : </div><input type="text" id="partname" name="partname" value="<?php echo $row->name; ?>" disabled><br/>
 			<div class="label">Niveau : </div><input type="number" step="1" min="1" max="99" id="partlv" name="partlv" value="<?php echo $row->level; ?>"><br/>
 			<center><input type="submit" value="Editer le partenaire" name="submit" id="partsubmit">
+			<input type="submit" value="Annuler les changements" name="submit" id="cancel"></center>
+		</form>
+		<?php }}} ?>
+		<?php
+			if ($_SESSION["table"] == "partners"){
+				$petedit = $PDO->query("SELECT * FROM pets ORDER BY ID");
+				foreach ($petedit as $row){
+					if ($row->ID == $_SESSION["id"]){
+		?>
+		<form action="./pets.php" method="POST" id="pets">
+			<div class="label">Personnage : </div>
+			<select name="charapets" form="pets" id="charapets">
+				<?php
+					$charapartners = $PDO->query("SELECT * FROM characters ORDER BY ID");
+					foreach ($charapartners as $charow){
+						echo "<option value='" . $charow->ID . "'>" . $charow->pseudo . "</option>";
+					}
+				?>
+			</select><br/>
+			<div class="label">Nom de l'image : </div><input type="text" id="petpic" name="petpic" value="<?php echo $row->image_url ?>"><br/>
+			<div class="label">Nom : </div><input type="text" id="petname" name="petname" value="<?php echo $row->name ?>"><br/>
+			<div class="label">Niveau : </div><input type="number" step="1" min="1" max="99" id="petlv" name="petlv" value="<?php echo $row->level ?>"><br/>
+			<div class="label">Niveau d'attaque : </div><input type="number" step="1" min="0" max="10" id="attlv" name="attlv" value="<?php echo $row->atqlv ?>"><br/>
+			<div class="label">Niveau de défense : </div><input type="number" step="1" min="0" max="10" id="deflv" name="deflv" value="<?php echo $row->deflv ?>"><br/>
+			<center><input type="submit" value="Editer le nosmate" name="submit" id="petsubmit">
 			<input type="submit" value="Annuler les changements" name="submit" id="cancel"></center>
 		</form>
 		<?php }}} ?>
