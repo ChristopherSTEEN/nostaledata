@@ -287,7 +287,7 @@ $(function(){
 			url: "../ajax/ajaxedit.php",
 			data : data,
 			success: function(success){
-				if (success == "<span id='success'>Changement effectué</span>"){
+				if (success == "<span id='success'>Modifications effectuées</span>"){
 					$("#globalerror").html(success)
 					window.location.replace("../ressources/characters.php").delay(10000)
 				} else {
@@ -316,7 +316,7 @@ $(function(){
 			url: "../ajax/ajaxedit.php",
 			data : data,
 			success: function(success){
-				if (success == "<span id='success'>changement effectué</span>"){
+				if (success == "<span id='success'>Modifications effectuées</span>"){
 					$("#globalerror").html(success)
 					window.location.replace("../ressources/characters.php").delay(2000)
 				} else {
@@ -341,7 +341,7 @@ $(function(){
 			url: "../ajax/ajaxedit.php",
 			data : data,
 			success: function(success){
-				if (success == "<span id='success'>Changement effectué</span>"){
+				if (success == "<span id='success'>Modifications effectuées</span>"){
 					$("#globalerror").html(success)
 					window.location.replace("../ressources/cards.php").delay(2000)
 				} else {
@@ -365,7 +365,7 @@ $(function(){
 			url: "../ajax/ajaxedit.php",
 			data : data,
 			success: function(success){
-				if (success == "<span id='success'>Changement effectué</span>"){
+				if (success == "<span id='success'>Modifications effectuées</span>"){
 					$("#globalerror").html(success)
 					window.location.replace("../ressources/equipements.php").delay(2000)
 				} else {
@@ -391,7 +391,7 @@ $(function(){
 			url: "../ajax/ajaxedit.php",
 			data : data,
 			success: function(success){
-				if (success == "<span id='success'>Changement effectué</span>"){
+				if (success == "<span id='success'>Modifications effectuées</span>"){
 					$("#globalerror").html(success)
 					window.location.replace("../ressources/fairies.php").delay(2000)
 				} else {
@@ -413,7 +413,7 @@ $(function(){
 			url: "../ajax/ajaxedit.php",
 			data : data,
 			success: function(success){
-				if (success == "<span id='success'>Changement effectué</span>"){
+				if (success == "<span id='success'>Modifications effectuées</span>"){
 					$("#globalerror").html(success)
 					window.location.replace("../ressources/jewelries.php").delay(2000)
 				} else {
@@ -436,7 +436,7 @@ $(function(){
 			url: "../ajax/ajaxedit.php",
 			data : data,
 			success: function(success){
-				if (success == "<span id='success'>Changement effectué</span>"){
+				if (success == "<span id='success'>Modifications effectuées</span>"){
 					$("#globalerror").html(success)
 					window.location.replace("../ressources/partnercards.php").delay(2000)
 				} else {
@@ -459,7 +459,7 @@ $(function(){
 			url: "../ajax/ajaxedit.php",
 			data : data,
 			success: function(success){
-				if (success == "<span id='success'>Changement effectué</span>"){
+				if (success == "<span id='success'>Modifications effectuées</span>"){
 					$("#globalerror").html(success)
 					window.location.replace("../ressources/partnerequips.php").delay(2000)
 				} else {
@@ -482,7 +482,7 @@ $(function(){
 			url: "../ajax/ajaxedit.php",
 			data : data,
 			success: function(success){
-				if (success == "<span id='success'>Changement effectué</span>"){
+				if (success == "<span id='success'>Modifications effectuées</span>"){
 					$("#globalerror").html(success)
 					window.location.replace("../ressources/partners.php").delay(2000)
 				} else {
@@ -508,9 +508,35 @@ $(function(){
 			url: "../ajax/ajaxedit.php",
 			data : data,
 			success: function(success){
-				if (success == "<span id='success'>Changement effectué</span>"){
+				if (success == "<span id='success'>Modifications effectuées</span>"){
 					$("#globalerror").html(success)
 					window.location.replace("../ressources/pets.php").delay(2000)
+				} else {
+					$("#globalerror").html(success)
+				}
+			}
+		})
+	})
+	
+	$("#ressubmit").click(function(s){
+		s.preventDefault()
+		data = {
+			chara: $("#charares").val(),
+			img: $("#resistpic").val(),
+			fire: $("#fireres").val(),
+			water: $("#waterres").val(),
+			light: $("#lightres").val(),
+			dark: $("#darkres").val(),
+			action: "resedit"
+		}
+		$.ajax({
+			method: "POST",
+			url: "../ajax/ajaxedit.php",
+			data : data,
+			success: function(success){
+				if (success == "<span id='success'>Modifications effectuées</span>"){
+					$("#globalerror").html(success)
+					window.location.replace("../ressources/resists.php").delay(2000)
 				} else {
 					$("#globalerror").html(success)
 				}
