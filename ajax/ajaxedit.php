@@ -9,7 +9,7 @@
 	
 	if ($_POST["action"] == "cancel"){
 		session_destroy();
-		echo "Annulation des changements...";
+		echo "Annulation des modifications...";
 	}
 	
 	if ($_POST["action"] == "charaedit"){
@@ -29,7 +29,7 @@
 			$charaupdate->bindValue(':id', $_SESSION["id"]);
 			if($charaupdate->execute()){
 				session_destroy();
-				echo "<span id='success'>Changement effectué</span>";
+				echo "<span id='success'>Modifications effectuées</span>";
 			} else {
 				echo "<span id='error'>Erreur dans l'enregistrement</span>";
 			}
@@ -57,7 +57,7 @@
 			$avenupdate->bindValue(':id', $_SESSION["id"]);
 			if($avenupdate->execute()){
 				session_destroy();
-				echo "<span id='success'>Changement effectué</span>";
+				echo "<span id='success'>Modifications effectuées</span>";
 			} else {
 				echo "<span id='error'>Erreur dans l'enregistrement</span>";
 			}
@@ -77,7 +77,7 @@
 			$cardupdate->bindValue(':id', $_SESSION["id"]);
 			if($cardupdate->execute()){
 				session_destroy();
-				echo "<span id='success'>Changement effectué</span>";
+				echo "<span id='success'>Modifications effectuées</span>";
 			} else {
 				echo "<span id='error'>Erreur dans l'enregistrement</span>";
 			}
@@ -96,7 +96,7 @@
 			$equipupdate->bindValue(':id', $_SESSION["id"]);
 			if($cardupdate->execute()){
 				session_destroy();
-				echo "<span id='success'>Changement effectué</span>";
+				echo "<span id='success'>Modifications effectuées</span>";
 			} else {
 				echo "<span id='error'>Erreur dans l'enregistrement</span>";
 			}
@@ -117,7 +117,7 @@
 			$fairieupdate->bindValue(':id', $_SESSION["id"]);
 			if($fairieupdate->execute()){
 				session_destroy();
-				echo "<span id='success'>Changement effectué</span>";
+				echo "<span id='success'>Modifications effectuées</span>";
 			} else {
 				echo "<span id='error'>Erreur dans l'enregistrement</span>";
 			}
@@ -134,7 +134,7 @@
 			$jewelupdate->bindValue(':id', $_SESSION["id"]);
 			if($jewelupdate->execute()){
 				session_destroy();
-				echo "<span id='success'>Changement effectué</span>";
+				echo "<span id='success'>Modifications effectuées</span>";
 			} else {
 				echo "<span id='error'>Erreur dans l'enregistrement</span>";
 			}
@@ -152,7 +152,7 @@
 			$pcardupdate->bindValue(':id', $_SESSION["id"]);
 			if($pcardupdate->execute()){
 				session_destroy();
-				echo "<span id='success'>Changement effectué</span>";
+				echo "<span id='success'>Modifications effectuées</span>";
 			} else {
 				echo "<span id='error'>Erreur dans l'enregistrement</span>";
 			}
@@ -170,7 +170,7 @@
 			$pequipupdate->bindValue(':id', $_SESSION["id"]);
 			if($pequipupdate->execute()){
 				session_destroy();
-				echo "<span id='success'>Changement effectué</span>";
+				echo "<span id='success'>Modifications effectuées</span>";
 			} else {
 				echo "<span id='error'>Erreur dans l'enregistrement</span>";
 			}
@@ -188,7 +188,7 @@
 			$partupdate->bindValue(':id', $_SESSION["id"]);
 			if($partupdate->execute()){
 				session_destroy();
-				echo "<span id='success'>Changement effectué</span>";
+				echo "<span id='success'>Modifications effectuées</span>";
 			} else {
 				echo "<span id='error'>Erreur dans l'enregistrement</span>";
 			}
@@ -209,7 +209,28 @@
 			$petupdate->bindValue(':id', $_SESSION["id"]);
 			if($petupdate->execute()){
 				session_destroy();
-				echo "<span id='success'>Changement effectué</span>";
+				echo "<span id='success'>Modifications effectuées</span>";
+			} else {
+				echo "<span id='error'>Erreur dans l'enregistrement</span>";
+			}
+		} else {
+			echo "<span id='error'>Les champs doivent être rempli!<br/>Le champ image n'est pas obligatoire.</span>";
+		}
+	}
+	
+	if ($_POST["action"] == "resedit"){
+		if ($_POST["chara"] != "" && $_POST["fire"] != "" && $_POST["water"] != "" && $_POST["light"] != "" && $_POST["dark"] != ""){
+			$resistupdate = $PDO->prepare("UPDATE resists SET character_id=:chara, image_url=:img, fireres=:fire, waterres=:water, lightres=:light, darkres=:dark WHERE ID=:id");
+			$resistupdate->bindValue(':chara', $_POST["chara"]);
+			$resistupdate->bindValue(':img', $_POST["img"]);
+			$resistupdate->bindValue(':fire', $_POST["fire"]);
+			$resistupdate->bindValue(':water', $_POST["water"]);
+			$resistupdate->bindValue(':light', $_POST["light"]);
+			$resistupdate->bindValue(':dark', $_POST["dark"]);
+			$resistupdate->bindValue(':id', $_SESSION["id"]);
+			if($resistupdate->execute()){
+				session_destroy();
+				echo "<span id='success'>Modifications effectuées</span>";
 			} else {
 				echo "<span id='error'>Erreur dans l'enregistrement</span>";
 			}
