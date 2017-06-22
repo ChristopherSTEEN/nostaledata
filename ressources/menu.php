@@ -16,8 +16,8 @@
 		</li>
 		<li><a href="#">Collections</a>
 			<ul>
-				<li><a href="#">Collections de SP</a></li>
-				<li><a href="#">Collections de cartes de partenaires</a></li>
+				<li><a href="./spcollection.php">Collections de SP</a></li>
+				<li><a href="./cardcollection.php">Collections de cartes de partenaires</a></li>
 			</ul>
 		</li>
 	</ul>
