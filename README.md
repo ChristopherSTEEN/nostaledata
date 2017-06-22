@@ -1,5 +1,15 @@
-Français: <br/>
+Français:
 Site web permettant une gestion des différents personnages de Nostale, leurs équipements et leurs partenaires.
 
-English: <br/>
+English:
 Web site for an easy management for all your characters in the game Nostale, their equipments ans their partners.
+
+UPDATE 22/06/2017
+
+FR:
+La gestion du contenu a été terminé, le projet est actuellement en phase de test afin de voir si aucun souci ne se présente et pour ajouter du contenu à la BDD.
+Une fois le contenu créé, le projet sera alors relancé pour l'affichage des informations.
+
+EN:
+The content managment is finished, the project is in a test phase for finding bugs and create DB contents.
+When the content is succefully created, the project restart for the differents views of the informations.
