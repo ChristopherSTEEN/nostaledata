@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Gestions des nosmates</title>
+		<title>Collection des cartes de spécialistes</title>
 		<link rel="stylesheet" href="../css/default.css">
 		<link rel="icon" type="image/png" href="../img/icone.png">
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
