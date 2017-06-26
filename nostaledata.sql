@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `partnerequipments` (
   `partner_id` int(11) NOT NULL,
   `pequiptype` varchar(45) NOT NULL,
   `level` int(11) NOT NULL,
-  `rare` int(11) DEFAULT NULL,
+  `rare` varchar(45) DEFAULT NULL,
   `upgrade` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
