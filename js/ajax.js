@@ -449,7 +449,7 @@ $(function(){
 	$("#pequipsubmit").click(function(s){
 		s.preventDefault()
 		data = {
-			level: $("#pequiplevel").val(),
+			level: $("#pequiplv").val(),
 			rare: $("#pequiprare").val(),
 			upgrade: $("#pequipup").val(),
 			action: "pequipedit"
