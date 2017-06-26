@@ -87,14 +87,14 @@
 	}
 	
 	if ($_POST["action"] == "equipedit"){
-		if ($_POST["chara"] != "" && $_POST["rare"] != "" && $_POST["upgrade"] != ""){
+		if ($_POST["chara"] != "" && $_POST["upgrade"] != ""){
 			$equipupdate = $PDO->prepare("UPDATE equipments SET character_id=:chara, image_url=:img, rare=:rare, upgrade=:up WHERE ID=:id");
 			$equipupdate->bindValue(':chara', $_POST["chara"]);
 			$equipupdate->bindValue(':img', $_POST["img"]);
 			$equipupdate->bindValue(':rare', $_POST["rare"]);
 			$equipupdate->bindValue(':up', $_POST["upgrade"]);
 			$equipupdate->bindValue(':id', $_SESSION["id"]);
-			if($cardupdate->execute()){
+			if($equipupdate->execute()){
 				session_destroy();
 				echo "<span id='success'>Modifications effectuées</span>";
 			} else {
