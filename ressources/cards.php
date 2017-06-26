@@ -9,6 +9,7 @@
 		<link rel="icon" type="image/png" href="../img/icone.png">
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="../js/script.js"></script>
+		<script src="../js/ajax.js"></script>
 	</head>
 	<body>
 		<?php include_once ("./menu.php"); ?>
@@ -55,10 +56,10 @@
 								<td>" . $row->pseudo ."</td>
 								<td>" . $row->image_url ."</td>
 								<td>" . $row->name ."</td>
-								<td>" . $row->cardnumber ." %</td>
-								<td>" . $row->level ." %</td>
-								<td>" . $row->upgrade ." %</td>
-								<td>" . $row->reinforcement ." %</td>
+								<td>" . $row->cardnumber ."</td>
+								<td>" . $row->level ."</td>
+								<td>" . $row->upgrade ."</td>
+								<td>" . $row->reinforcement ."</td>
 							</tr>";
 					}
 				?>
