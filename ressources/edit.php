@@ -13,6 +13,7 @@
 		<script src="../js/ajax.js"></script>
 	</head>
 	<body>
+		<div id="globalerror"></div>
 		<?php
 			if ($_SESSION["table"] == "characters"){
 				$charaedit = $PDO->query("SELECT * FROM characters ORDER BY ID");
@@ -20,7 +21,6 @@
 					if ($row->ID == $_SESSION["id"]){
 		?>
 		<center><h1>Editer un personnage</h1></center>
-		<div id="globalerror"></div>
 		<form action="edit.php" method="POST" id="charaedit">
 			<div class="label">Pseudo : </div><input type="text" id="charaname" name="charaname" value="<?php echo $row->pseudo; ?>" disabled><br/>
 			<div class="label">Nom de l'image : </div><input type="text" id="charapic" name="charapic" value="<?php echo $row->image_url; ?>"><br/>
@@ -202,7 +202,7 @@
 		?>
 		<center><h1>Editer un équipement pour partenaire</h1></center>
 		<form action="./partnerequips.php" method="POST" id="partequips">
-			<div class="label">Partenaire : </div><input type="text" id="partname" name="partname" value="<?php echo $row->partname . ' (' . $row->charaname . ')'; ?>" disabled><br/>
+			<div class="label">Partenaire : </div><input type="text" id="partname" name="partname" value="<?php echo $row->partname . ' (' . $row->charapseudo . ')'; ?>" disabled><br/>
 			<div class="label">Type : </div><input type="text" id="pequiptype" name="pequiptype" value="<?php echo $row->pequiptype; ?>" disabled><br/>
 			<div class="label">Niveau : </div><input type="number" step="1" min="1" max="99" id="pequiplv" name="pequiplv" value="<?php echo $row->level; ?>"><br/>
 			<div class="label">Rareté : </div>
