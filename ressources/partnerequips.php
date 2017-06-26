@@ -59,12 +59,12 @@
 			</thead>
 			<tbody>
 				<?php
-					$pequips = $PDO->query("SELECT p.*, pa.name AS partname FROM partnerequipments p INNER JOIN partners pa ON pa.ID = p.partner_id ORDER BY p.ID");
+					$pequips = $PDO->query("SELECT p.*, pa.name AS partname, c.pseudo FROM partnerequipments p INNER JOIN partners pa ON pa.ID = p.partner_id INNER JOIN characters c ON pa.character_id = c.ID ORDER BY p.ID");
 					foreach ($pequips as $row){
 						echo "
 							<tr>
 								<td><a href='pequips' class='edit' name='" . $row->ID . "'><img src='../img/pen.png' alt='Editer'></a><a href='pequips' class='delete' name='" . $row->ID . "'><img src='../img/bin.png' alt='Supprimer'></a></td>
-								<td>" . $row->partname ."</td>
+								<td>" . $row->partname ." (" . $row->pseudo . ")</td>
 								<td>" . $row->pequiptype ."</td>
 								<td>" . $row->level ."</td>
 								<td>" . $row->rare ."</td>
