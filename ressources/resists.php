@@ -24,7 +24,7 @@
 					}
 				?>
 			</select><br/>
-			<div class="label">Nom de l'image : </div><input type="file" id="resistpic" name="resistpic"><br/>
+			<div class="label">Nom de l'image : </div><input type="text" id="resistpic" name="resistpic"><br/>
 			<div class="label">Type : </div>
 			<select name="resisttype" form="resists" id="resisttype">
 				<option value="Gants">Gants</option>
