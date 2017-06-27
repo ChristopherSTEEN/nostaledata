@@ -229,6 +229,7 @@
 				foreach ($partedit as $row){
 					if ($row->ID == $_SESSION["id"]){
 		?>
+		<center><h1>Editer un partenaire</h1></center>
 		<form action="./partners.php" method="POST" id="partners">
 			<div class="label">Personnage : </div>
 			<select name="charapartners" form="partners" id="charapartners">
@@ -253,6 +254,7 @@
 				foreach ($petedit as $row){
 					if ($row->ID == $_SESSION["id"]){
 		?>
+		<center><h1>Editer un nosmate</h1></center>
 		<form action="./pets.php" method="POST" id="pets">
 			<div class="label">Personnage : </div>
 			<select name="charapets" form="pets" id="charapets">
@@ -278,6 +280,7 @@
 				foreach ($resedit as $row){
 					if ($row->ID == $_SESSION["id"]){
 		?>
+		<center><h1>Editer une résistance</h1></center>
 		<form action="./resists.php" method="POST" id="resists">
 			<div class="label">Personnage : </div>
 			<select name="charares" form="resists" id="charares">
@@ -288,7 +291,7 @@
 					}
 				?>
 			</select><br/>
-			<div class="label">Nom de l'image : </div><input type="file" id="resistpic" name="resistpic" value="<?php echo $row->image_url; ?>"><br/>
+			<div class="label">Nom de l'image : </div><input type="text" id="resistpic" name="resistpic" value="<?php echo $row->image_url; ?>"><br/>
 			<div class="label">Type : </div><input type="text" id="restype" name="restype" value="<?php echo $row->restype; ?>" disabled><br/>
 			<div class="label">Nom : </div><input type="text" id="resistname" name="resistname" value="<?php echo $row->name; ?>" disabled><br/>
 			<div class="label">Niveau : </div><input type="number" step="1" min="1" max="99" id="resistlv" name="resistlv" value="<?php echo $row->level; ?>" disabled><br/>
