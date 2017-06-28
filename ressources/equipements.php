@@ -8,7 +8,7 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="../css/default.css">
 		<link rel="icon" type="image/png" href="../img/icone.png">
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="../js/jquery321.js"></script>
 		<script src="../js/script.js"></script>
 		<script src="../js/ajax.js"></script>
 	</head>
