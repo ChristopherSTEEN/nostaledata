@@ -121,6 +121,7 @@ CREATE TABLE IF NOT EXISTS `partnercards` (
   `character_id` int(11) NOT NULL,
   `image_url` text,
   `pcardtype` varchar(45) NOT NULL,
+  `pcardident` varchar(10) NOT NULL,
   `name` varchar(45) NOT NULL,
   `skillsrank` varchar(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
